@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import CloseIcon from '@mui/icons-material/Close'
-import Spinner from '../../components/Spinner'
-import Posts from '../MainPage/Posts'
-import Sidebar from './Sidebar'
+// import Spinner from '../../components/Spinner'
+import Posts from '../../../components/MainPage/Posts'
+import Sidebar from '../../../components/MainPage/Sidebar'
 import { useSelector } from 'react-redux'
-import { fetchUsersAction, followUserAction, unfollowUserAction, uploadProfilePhototAction, uploadCoverPhototAction, LoggedInUserAction } from '../../store/usersSlice'
+import { fetchUsersAction, followUserAction, unfollowUserAction, uploadProfilePhototAction, uploadCoverPhototAction, LoggedInUserAction } from '../../../store/usersSlice'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Edit from '@mui/icons-material/Edit'
 import { useSession } from 'next-auth/react'
 
-function UserDetails(props)
+function UserDetails({props})
 {
     const router = useRouter()
     const {data:session} = useSession()

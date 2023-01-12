@@ -15,7 +15,8 @@ import db from '../utils/db/dbConnect';
 
 import { useDispatch } from 'react-redux'
 
-export default function Page() {
+export default function Page(props) {
+  console.log(props)
   const dispatch = useDispatch()
   
   dispatch(fetchPostsAction())

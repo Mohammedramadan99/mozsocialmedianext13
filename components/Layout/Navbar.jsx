@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from 'react'
 import Logo from '../Logo/Logo'
 import HomeIcon from '@mui/icons-material/Home'
@@ -12,7 +13,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import { useRef } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { logoutAction } from '../../store/usersSlice'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
