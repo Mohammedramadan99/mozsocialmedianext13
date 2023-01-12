@@ -1,0 +1,170 @@
+// ############## functions ##############
+@function rem($value) {
+    $remvalue: $value;
+    $remValue: ($value / 16)+rem;
+    @return $remValue;
+}
+
+@mixin flex($justify: center, $align: center, $gap: 10, $dir: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    gap: rem($gap);
+    flex-direction: $dir;
+}
+
+@mixin grid($min, $gap: 10) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(rem($min), 1fr));
+    gap: rem($gap);
+}
+
+@mixin grid-fr($fr) {
+    display: grid;
+    grid-template-columns: $fr;
+}
+
+@mixin img($fit: contain) {
+    width: 100%;
+    height: 100%;
+    object-fit: $fit;
+}
+
+@mixin img_rounded() {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+@mixin btn($bg: transparent, $color: $secondary-color, $hover-bg: $secondary_color, $hover-color: #fff, $padding: 7px 16px, $border: 1px solid $secondary-color, $b-radius: 20px) {
+    background-color: $bg;
+    border: $border;
+    padding: $padding;
+    border-radius: $b-radius;
+    color: $color;
+    transition: $normal_transition;
+    text-transform: capitalize;
+
+    &:hover {
+        background-color: $hover-bg;
+        color: $hover-color;
+    }
+}
+
+// ############## VARS ##############
+$sidebar_width: rem(360);
+$feed_width: rem(680);
+$light_border: 1px solid #ddd;
+$normal_transition: .3s ease;
+// colors 
+$primary-color: #001D3D;
+$primary_light-color: #003566;
+$secondary-color: #e91e63;
+$secondary_light-color: #ffd60a;
+$blur_color: #03a9f4;
+
+// ############## classes ##############
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input {
+    &:focus {
+        outline: none;
+    }
+}
+
+
+ul {
+    li {
+        list-style: none;
+    }
+}
+
+// container
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+// logo 
+.pageContent__left,
+.profile__left {
+    &__logoPart {
+        @include flex($justify: space-between);
+
+        &__logo {
+            margin-right: 10px;
+
+            img {
+                width: 60px;
+            }
+        }
+
+        &__search {
+            input {
+                border: $light_border;
+                width: 100%;
+                padding: 10px;
+                border-radius: 20px;
+            }
+        }
+    }
+}
+
+.alertModal {
+    text-align: center;
+}
+
+// Small
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+// Medium
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+// large
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+// animations 
+@keyframes showModal {
+    0% {
+        transform: scale(.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes hideModal {
+    0% {
+        transform: scale(1);
+        width: 100%;
+        height: 100%;
+    }
+
+    100% {
+        transform: scale(.9);
+        width: 0%;
+        height: 0%;
+    }
+}

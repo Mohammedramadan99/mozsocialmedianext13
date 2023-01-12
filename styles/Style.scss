@@ -1,0 +1,202 @@
+@import './VARS';
+@import './globals';
+@import './Navbar';
+@import './MainPage';
+@import './Posts';
+@import './WritePost';
+@import './UserDetails';
+@import './auth';
+@import './people';
+@import './Alert';
+@import './Spinner';
+@import './Button';
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+::-webkit-scrollbar {
+    // display: none;
+}
+
+// .spinner-parent {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     z-index: 10000;
+//     background-color: #fff;
+//     width: 100%;
+//     height: 100vh;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     overflow: hidden;
+// }
+
+// .spinner {
+//     width: 10em;
+//     height: 10em;
+//     border-top: 1em solid #000;
+//     border-right: 1em solid #000;
+//     border-radius: 50%;
+//     animation: spinner 2s linear infinite;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     z-index: 10000;
+// }
+
+
+.circle {
+    width: 1.5em;
+    height: 1.5em;
+    background-color: #000;
+    border-radius: 50%;
+    /* margin-left: 8em;
+  margin-top: 0.6em; */
+}
+
+@keyframes spinner {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.img--container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.img--parent {
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+.mainAlert{
+    background-color: $main_color;
+}
+.version{
+    position: relative;
+    .box{
+        user-select: none;
+        &:hover{
+            .info{
+                visibility: visible;
+                opacity: 1;
+                left: 20;
+            }
+            
+        }
+        
+        .info{
+            position: absolute;
+            width: 200px;
+            background-color: #fff;
+            top: -170px;
+            padding: 10px;
+            text-align: left;
+            border-radius: 10px;
+            font-size: 12px;
+            left: -400;
+            opacity: 0;
+            transition: $reg_transition;
+            visibility: hidden;
+            h3{
+                font-weight: 600;
+                padding-bottom: rem(10) ;
+            }
+            ul{
+                li{
+                    font-weight: 500;
+                    margin-bottom: rem(10);
+                    @include flex($justify:"flex-start");
+                }
+            }
+        }
+    }
+}
+hr {
+    margin: 20px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+textarea,
+input {
+    outline: none;
+}
+
+.spinner-container {
+    width: 100%;
+    margin: auto;
+    height: 100%;
+    @include flex();
+
+    .text-dark {
+        color: $secondary-color  !important;
+    }
+}
+
+.logo__litter {
+    display: flex;
+    align-items: flex-end;
+    column-gap: rem(5);
+    >div {
+        background-color: $main_color;
+            width: 40px;
+            height: 40px;
+            border-bottom-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 7px;
+            border-top-left-radius: 7px;
+            color: #fff !important;
+            padding: 10px;
+            @include flex();
+            font-weight: 400;
+            font-size: 15px;
+    }
+    span{
+        text-transform: uppercase;
+        color: $main_color;
+        font-weight: 500;
+        font-size: rem(12)
+
+    }
+}
+
+.img__rounded {
+    @include img_rounded();
+    object-fit: cover;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.common_btn {
+    cursor: pointer;
+    border-radius: 30px;
+    text-transform: capitalize;
+    border: 1px solid $main_color;
+    color: $main_color;
+    padding: 5px 10px;
+    font-weight: 700;
+    transition: $reg_transition;
+    width: fit-content;
+
+    &:hover {
+        background-color: $main_color;
+        border-color: transparent;
+        color: #fff;
+    }
+}

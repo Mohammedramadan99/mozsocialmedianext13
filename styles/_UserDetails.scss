@@ -1,0 +1,509 @@
+.user {
+    background-color: #f4f2f2;
+    position: relative;
+
+    &__top {
+        &__img {
+            position: relative;
+
+            &__cover {
+                position: relative;
+                width: 100%;
+                height: 330px;
+                @include flex($dir:column);
+                
+                .overlay {
+                    position: absolute;
+                    width: 100%;
+                    height: 30%;
+                    font-weight: 700;
+                    color: #fff;
+                    @include flex();
+                    text-transform: capitalize;
+                    cursor: pointer;
+                    overflow: hidden;
+                    transition: $reg_transition;
+                    opacity: 1;
+                    z-index: 2000;
+                    &__edit{
+                        background-color: rgba(#1a50e4, .3);
+                        border-radius: 50%;
+                        width: 0;
+                        height: 0;
+                        opacity: 0;
+                        transition: $reg_transition;
+                        @include flex()
+                    }
+                }
+                .coverTxt {
+                    text-align: center;
+                    font-size: rem(30);
+                    text-transform: capitalize;
+                    color: #ddd;
+                    user-select: none;
+                }
+                &:hover {
+                    .overlay {
+                    &__edit {
+                        width: rem(50);
+                        height: rem(50);
+                        opacity: 1;
+                    }
+                    }
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+            }
+
+            
+        }
+
+        &__info {
+            position: relative;
+            @include flex($justify: flex-start);
+            padding: rem(5) rem(100);
+            background-color: #fff;
+            &__personalImg {
+                position: relative;
+                flex: 3;
+                &__container{
+                    position: absolute;
+                    box-shadow: 0 1px 0 #e1e8ed;
+                    top: -170px;
+                    width: 180px;
+                    height: 180px;
+                    border-radius: 100%;
+                    overflow: hidden;
+                    border: 6px solid #f1f1f1;
+                    background-color: #fff;
+                    z-index: 2001;
+                }
+                @media (max-width: 468px) {
+                    left:0 !important;
+                }
+                &.flex-start {
+                    @include flex($dir: column, $justify: space-around);
+                }
+
+                &.center {
+                    @include flex();
+                    border: none;
+                }
+
+                .personalImgTxt {
+                    text-align: center;
+                    font-size: rem(18);
+                    font-weight: 700;
+                    text-transform: capitalize;
+                    color: #ddd;
+                    background-color: #fff;
+                    width: 100%;
+                    height: 50%;
+                    user-select: none;
+                    @include flex($align: flex-start);
+                }
+
+                @media (max-width: 768px) {
+                    bottom: -50px;
+                    left: 50px;
+                    width: 100px;
+                    height: 100px;
+                }
+
+                .overlay {
+                    position: absolute;
+                    width: 30%;
+                    height: 30%;
+                    font-weight: 700;
+                    color: #fff;
+                    @include flex();
+                    text-transform: capitalize;
+                    cursor: pointer;
+                    overflow: hidden;
+                    transition: $reg_transition;
+                    opacity: 1;
+                    z-index: 2000;
+
+                    &__edit {
+                        background-color: rgba(#1a50e4, .3);
+                        border-radius: 50%;
+                        width: 0;
+                        height: 0;
+                        opacity: 0;
+                        transition: $reg_transition;
+                        @include flex();
+
+                        svg {
+                            font-size: rem(17);
+                        }
+                    }
+                }
+
+                &:hover {
+                    .overlay {
+                        &__edit {
+                            width: rem(30);
+                            height: rem(30);
+                            opacity: 1;
+
+                        }
+                    }
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            &__following {
+                flex: 9;
+                @include flex($justify:flex-end);
+
+                &>div {
+                    padding: 7px 20px;
+                    width: 100px;
+                    margin: 0 10px;
+                    text-transform: capitalize;
+                    font-weight: 700;
+                    color: $main_color;
+                    border-radius: 20px;
+                    font-size: rem(12);
+                    cursor: pointer;
+                    border: 2px solid $main_color;
+                    transition: $reg_transition;
+                    text-align: center;
+                    &:hover{
+                        background-color: $main_color;
+                        color: #fff !important;
+                    }
+                }
+            }
+
+            &__name {
+                text-transform: capitalize;
+                font-weight: 600;
+                padding: 10px 0;
+                font-size: 20px;
+                color: $main_color;
+                @media (max-width: 768px) {
+                    font-size: 20px;
+                }
+                @media (max-width: 468px) {
+                    font-size: 12px;
+                }
+            }
+
+            &__edit {
+                margin-right: 20px;
+                padding: 10px;
+                text-transform: capitalize;
+                background-color: #eee;
+                color: #000;
+                border-radius: 10px;
+                font-weight: 700;
+                cursor: pointer;
+                transition: $reg_transition;
+
+                &:hover {
+                    background-color: darken(#eee, 10%);
+                }
+            }
+
+        }
+    }
+
+    &__bottom {
+        padding: 30px;
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+
+        }
+
+        &__sidebar {
+            position: sticky;
+            top: 90px;
+            z-index: 1000;
+            height: calc(100vh - 90px); // i put that beacuse without it -- sidebar sticky wouldnot work -- so you have to select the height
+
+            @media (max-width: 768px) {
+                position: inherit;
+                z-index: inherit;
+                top: inherit;
+                height: inherit;
+            }
+
+            &__friendsCard,
+            &__introCard {
+                background-color: #fff;
+                padding: 20px;
+                margin-bottom: 20px;
+
+                &__title {
+                    font-weight: 500; 
+                    color: #424242;
+                    font-size: rem(20);
+                    text-transform: capitalize;
+                    padding-bottom: 5px;
+                    border-bottom: 2px solid $main_color;
+                    width: fit-content;
+                }
+            }
+
+            &__introCard {
+                &__content {
+                    line-height: 3;
+                    &__bio {
+                        text-align: center;
+                        color: #999;
+                    }
+                    &__form{
+                        @include flex($dir: column);
+                        width: 100%;
+                        label{
+                            width: 100px;
+                            text-align: center;
+                        }
+                        &__bio,&__study, &__status {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            label{
+                                width: 120px;
+                            }
+                            input{
+                                height: 30px;
+                                padding: rem(10);
+                                border: 1px solid #ddd;
+                            }
+                        }
+                        
+                        &__btn{
+                            background-color: transparent;
+                            padding: 0 rem(20) !important;
+                        }
+                    }
+                }
+            }
+
+            &__friendsCard { 
+                &__friendsList {
+                    margin-top: 20px;
+
+                    @include flex($justify: space-between);
+
+                    &__friend {
+                        @include flex($dir: column);
+                        transition: $reg_transition;
+                        color: #000;
+
+
+                        &__img {
+                            width: 100px;
+                            height: 100px;
+                            border-radius: 50%;
+                            overflow: hidden;
+                            transition: $reg_transition;
+
+                            &:hover {
+                                transform: scale(1.1);
+                            }
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                transition: $reg_transition;
+                            }
+                        }
+
+                        &__name {
+                            text-align: center;
+                            font-weight: 700;
+                            text-transform: capitalize;
+                            font-size: 12px;
+                            padding: 0 10px;
+                        }
+                    }
+                }
+
+                &__btn {
+                    margin: 30px auto 0;
+                }
+            }
+            &__followPersons{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 0;
+                transition: $reg_transition;
+                opacity: 0;
+                visibility: hidden;
+                &.active{
+                    height: 100%;
+                    visibility: visible;
+                    opacity: 1;
+                    animation: showModal 1s linear;
+                }
+                &.hide{
+                    animation: hideModal 1s linear;
+                }
+                &__overlay{
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(#ffff, 1);
+                    &__modal{
+                        padding: rem(20);
+                        &__close{
+                            border: 1px solid;
+                            width: fit-content;
+                            padding: rem(2);
+                            border-radius: 50%;
+                            @include flex();
+                            margin: 0 auto;
+                            svg{
+                                font-size: rem(15);
+                            }
+                        }
+                        &__title{
+                            text-transform: capitalize;
+                            font-weight: 600;
+                            font-size: rem(20);
+                            margin: rem(10) 0 rem(20);
+                            color: $main_color;
+                        }
+                        &__persons{
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: space-around;
+                            gap: rem(20);
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+    &__editPhoto {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 5000;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        opacity: 0;
+        transition: $reg_transition;
+        visibility: hidden;
+
+        &.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .overlay {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(#000000, .7);
+            z-index: 2000;
+            @include flex();
+        }
+
+        &__box {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            background-color: #fff;
+            padding: 30px;
+
+            &__title {
+                font-size: 30px;
+                text-transform: capitalize;
+                text-align: center;
+                font-weight: 700;
+                padding-bottom: 20px;
+            }
+
+            &__editCover {
+                &__img {
+                    width: 100%;
+                    height: 300px;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+
+            &__editProfilePhoto {
+                position: relative;
+
+                &__img {
+                    position: absolute;
+                    bottom: -50px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+            }
+
+            &__closeIcon {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+            }
+
+            &__btn {
+                font-weight: 700;
+                margin: 80px auto;
+            }
+        }
+
+    }
+}
+@keyframes showModal {
+    0%{
+        opacity: 0;
+        height: 0;
+        visibility: hidden;
+    }
+    100%{
+        opacity: 1;
+        height: 100%;
+                visibility: visible;
+    }
+}
+@keyframes hideModal {
+    0%{
+        opacity: 1;
+        height: 100%;
+        visibility: visible;
+    }
+    100%{
+        opacity: 0;
+        height: 0;
+        visibility: hidden;
+    }
+}

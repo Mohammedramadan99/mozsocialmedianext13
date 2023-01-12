@@ -1,0 +1,143 @@
+.mainPage {
+    background-color: #eee;
+    padding: 0 20px;
+    min-height: calc(100vh - 60px);
+    padding-top: 20px;
+
+    .mainPage-container {
+        display: grid;
+        grid-template-columns: 2fr 5fr;
+    }
+
+    @media (max-width: 768px) {
+        &__left {
+            // visibility: hidden;
+            display: none;
+        }
+ 
+        .mainPage-container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__left {
+
+        // background-color: #eee;
+
+        &__sidebar {
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+            
+            &__G1 {
+                background-color: #fff;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                margin-bottom: rem(20);
+                &__Imgs {
+                    position: relative;
+
+                    &__coverImg {
+                        width: 100%;
+                        height: 70px;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    &__profileImg {
+                        position: absolute;
+                        bottom: -20px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        border-radius: 50%;
+                        overflow: hidden;
+                        border: 2px solid #fff;
+
+                        img {
+                            object-fit: cover;
+                        }
+                    }
+                }
+
+                &__name {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    text-align: center;
+                    text-transform: capitalize;
+                    margin-top: 30px;
+                    font-weight: 800;
+                }
+
+                &__follow {
+                    @include flex($justify: space-between);
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    padding-bottom: 20px;
+                    margin-top: rem(20);
+                    &_item {}
+                }
+            }
+
+            &__G2 {
+                background-color: #fff;
+                padding-bottom: 20px;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                padding: 10px;
+
+                &__head {
+                    text-transform: capitalize;
+                    font-weight: 700;
+                }
+
+                &__persons {
+                    padding: 20px 0;
+
+                    &__person {
+                        @include flex($justify: space-between);
+                        margin-bottom: 20px;
+
+                        &__info {
+                            display: flex;
+                            align-items: center;
+
+                            &__name {
+                                padding-left: 10px;
+                                font-size: 12px;
+                                font-weight: 700;
+                                text-transform: capitalize;
+                            }
+
+                            &__img {
+                                overflow: hidden;
+
+                                img {
+                                    object-fit: cover;
+                                }
+                            }
+                        }
+
+                        &__follow {
+                            cursor: pointer;
+                            font-size: 10px;
+
+                            &:hover {
+                                background-color: $main_color;
+                                border-color: transparent;
+                                color: #fff;
+                            }
+                        }
+                    }
+
+                    &__seeMore {
+                        margin: auto;
+                    }
+                }
+            }
+        }
+    }
+}

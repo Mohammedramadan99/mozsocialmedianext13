@@ -1,0 +1,167 @@
+.People {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    background-color: #f1f1f1;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 4fr 5fr;
+    }
+    @media (max-width: 500px) {
+        grid-template-columns: 1fr;
+        .People__sidebar{
+            position: relative;
+            top: 0;
+            height: 100%;
+            &__title{
+                font-size: rem(18);
+            }
+            &__list{
+                &__item{
+                    font-size: rem(12);
+                    &__icon{
+
+                    }
+                    &__name{
+
+                    }
+                }
+            }
+        }
+    }
+    &__sidebar {
+        position: sticky;
+        top: 0;
+        height: calc(100vh);
+        background-color: #fff;
+        box-shadow: $light_shadow;
+        padding: 10px;
+
+        &__title {
+            padding: 10px;
+            font-size: 25px;
+            font-weight: 900;
+            text-transform: capitalize;
+        }
+
+        &__list {
+
+            &__item {
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                transition: $reg_transition;
+                cursor: pointer;
+
+                &:hover,
+                &.active {
+                    background-color: #f1f1f1;
+                }
+                &.active {
+                    .People__sidebar__list__item__name{
+                        transform: scale(1.2);
+                        margin-left: rem(10);
+                    }
+                }
+                &__icon {
+                    margin-right: 10px;
+                    background-color: $main_color;
+                    border-radius: 50%;
+                    padding: 5px;
+                }
+
+                &__name {
+                    text-transform: capitalize;
+                    font-weight: 700;
+                    transform: scale(1.1);
+                    transition: $reg_transition;
+                }
+            }
+
+        }
+    }
+
+    &__mainPage {
+        padding: 20px 40px;
+        @media (max-width: 500px) {
+            .People{
+                &__mainPage{
+                    &__mayKnow{
+                        &__title{
+                            font-size: rem(18);
+                            text-align: left;
+                        }
+                    }
+                    &__Followers{
+                        &__list{
+    
+                        }
+                    } 
+                }
+
+            }
+        }
+        &__Followers,
+        &__mayKnow {
+            &__title {
+                // padding: 0 10px;
+                font-size: 25px;
+                font-weight: 900;
+                text-transform: capitalize;
+            }
+
+            &__list {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 30px;
+                padding-top: 20px;
+            }
+        }
+    }
+
+}
+
+.People__mainPage__mayKnow__list,
+.People__mainPage__Followers__list {
+    &__person {
+        background-color: #fff;
+
+        &__img {
+            width: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            text-transform: capitalize;
+            font-weight: 700;
+
+            &__name {
+                margin: 20px 0;
+            }
+
+            &__btn,
+            a {
+                width: 100% !important;
+                background-color: lighten($main_color, 20%);
+                color: #000;
+                padding: 10px;
+                text-align: center;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: $reg_transition;
+
+                &:hover {
+                    background-color: lighten($main_color, 10%);
+                    color: #000;
+                }
+            }
+        }
+    }
+}

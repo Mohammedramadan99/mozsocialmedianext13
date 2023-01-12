@@ -1,0 +1,18 @@
+.alert__err,
+.alert__success {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+}
+
+.alert__err {
+    background-color: rgb(236, 48, 15);
+}
+
+.alert__success {
+    background-color: rgb(18, 230, 46);
+}
