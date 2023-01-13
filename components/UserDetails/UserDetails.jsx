@@ -11,11 +11,10 @@ import Image from 'next/image'
 import Edit from '@mui/icons-material/Edit'
 import { useSession } from 'next-auth/react'
 
-function UserDetails(props)
+function UserDetails({id})
 {
+    
     const router = useRouter()
-    const {data:session} = useSession()
-    const { id } = props.params
     const dispatch = useDispatch()
     const [uploadImage, setUploadImage] = useState("");
     const [imagePreview, setImagePreview] = useState("")
@@ -31,7 +30,7 @@ function UserDetails(props)
     } = useSelector(state => state.users);
     const [editPhoto, setEditPhoto] = useState(false)
     const [editCover, setEditCover] = useState(false)
-    
+    // console.log(userAuth)
     // const { likes, dislikes } = useSelector(state => state.post)
     // const comment = useSelector(state => state?.comment);
 
@@ -84,12 +83,10 @@ function UserDetails(props)
         router.push("/")
     }
     
-    useEffect(() => {
-        dispatch(LoggedInUserAction({email:session?.user?.email}))
-    }, [session])
     
-    console.log({session})
+    // console.log({session})
     return (
+        
         <div className='user'>
             {/* {loading ? <Spinner /> : ( */}
                 <>

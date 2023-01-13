@@ -1,21 +1,40 @@
 "use client";
 import dynamic from 'next/dynamic'
-// import UserDetails from "../../components/UserDetails/UserDetails"
+import UserDetails from "../../../components/UserDetails/UserDetails"
 import { routerAnimation } from '../../../utils/animations'
 import { motion } from "framer-motion";
+import { useSession } from 'next-auth/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { LoggedInUserAction } from '../../../store/usersSlice';
 // import { wrapper } from "../../../store/store"
 // import { fetchUserDetailsAction, fetchUsersAction, LoggedInUserAction, userProfileAction } from "../../../store/usersSlice"
 // import {getCommentsAction} from '../../../store/postsSlice'
 // import { getSession, useSession } from 'next-auth/react';
-const UserDetails = dynamic(() => import('../../../components/UserDetails/UserDetails'))
-function userDetails()
+// const UserDetails = dynamic(() => import('../../../components/UserDetails/UserDetails'))
+function userDetails(props)
 {
-  return <motion.div variants={routerAnimation}
-    initial="initial"
-    animate="animate"
-    exit="exit">
-    <UserDetails />
-  </motion.div>
+    const {data:session} = useSession()
+    const dispatch = useDispatch()
+    const {
+        profile,
+        profileLoading,
+        profileImgUpdated,
+        followed,
+        unFollowed,
+        userAuth,
+        loading,
+    } = useSelector(state => state.users);
+    !userAuth?._id && dispatch(LoggedInUserAction({email:session?.user?.email}))
+
+    console.log("params",props.params.id)
+  return (
+    <motion.div variants={routerAnimation}
+        initial="initial"
+        animate="animate"
+        exit="exit">
+        <UserDetails id={props.params.id} />
+    </motion.div>
+  )
 }
 
 // export const getServerSideProps = wrapper.getServerSideProps(

@@ -19,7 +19,6 @@ const Spinner = dynamic(() => import('../Spinner'))
 
 function Posts({ direction, user })
 {
-    const dispatch = useDispatch()
     const router = useRouter()
     
     const [commentContent, setCommentContent] = useState("")
@@ -47,8 +46,7 @@ function Posts({ direction, user })
     {
         return <div>404</div>;
     }
-    return router.isFallback ? (<div>Loading...</div>)
-        : (
+    return (
         <div className={direction}>
                 <WritePost dir={direction} userDetails={user} />
                 {/* <MyPost /> */}

@@ -8,7 +8,7 @@ function Spinner()
         //         <div className="circle"></div>
         //     </div>
         // </div>
-        <div class="spinner"></div>
+        <div className="spinner"></div>
     )
 }
 

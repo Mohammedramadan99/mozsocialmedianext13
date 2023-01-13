@@ -98,9 +98,9 @@ export const LoggedInUserAction = createAsyncThunk(
     //http call
     try {
       
-      let link = `${URL}/api/users/profile`;
+      let link = `/api/users/profile`;
       const {data} = await axios.post(link,{email},config)
-
+      console.log('profileData', data)
       return data;
     } catch (error) {
       if (!error?.response) {
@@ -230,8 +230,8 @@ export const fetchUsersAction = createAsyncThunk(
     try {
       let link = ''
         num
-        ? (link = `${URL}/api/users?limit=${num}`)
-        : (link = `${URL}/api/users`);
+        ? (link = `/api/users?limit=${num}`)
+        : (link = `/api/users`);
       const { data } = await axios.get(link, config);
       return data;
     } catch (error) {

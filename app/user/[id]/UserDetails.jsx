@@ -11,7 +11,7 @@ import Image from 'next/image'
 import Edit from '@mui/icons-material/Edit'
 import { useSession } from 'next-auth/react'
 
-function UserDetails({props})
+function UserDetails(props)
 {
     const router = useRouter()
     const {data:session} = useSession()
