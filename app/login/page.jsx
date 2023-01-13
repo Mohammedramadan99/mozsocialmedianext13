@@ -35,11 +35,11 @@ export default function login()
         e.preventDefault()
         dispatch(loginUserAction(formData))
     }
-    if (userAuth)
-    {
-        dispatch(reset())
-        router.push("/");
-    }
+    // if (userAuth)
+    // {
+    //     dispatch(reset())
+    //     router.push("/");
+    // }
     const { data: session } = useSession()
     useEffect(() =>
     {

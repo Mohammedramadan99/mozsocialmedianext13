@@ -16,6 +16,7 @@
     "@next/bundle-analyzer": "^13.1.1",
     "@next/font": "13.0.7",
     "@reduxjs/toolkit": "^1.9.1",
+    "aws-crt": "^1.15.6",
     "axios": "^1.2.1",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.33.0",
