@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import CloseIcon from '@mui/icons-material/Close'
-import Spinner from '../../components/Spinner'
+// import Spinner from '../../components/Spinner'
 import Posts from '../MainPage/Posts'
 import Sidebar from './Sidebar'
 import { useSelector } from 'react-redux'
@@ -10,6 +10,8 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Edit from '@mui/icons-material/Edit'
 import { useSession } from 'next-auth/react'
+import dynamic from 'next/dynamic'
+const Spinner = dynamic(() => import('../../components/Spinner'))
 
 function UserDetails({id})
 {
@@ -21,7 +23,7 @@ function UserDetails({id})
     //User data from store
     const {
         profile,
-        profileLoading,
+        loadingProfile,
         profileImgUpdated,
         followed,
         unFollowed,
@@ -85,7 +87,9 @@ function UserDetails({id})
     
     
     // console.log({session})
-    return (
+    return loadingProfile ? (
+        <Spinner />
+    ) : (
         
         <div className='user'>
             {/* {loading ? <Spinner /> : ( */}

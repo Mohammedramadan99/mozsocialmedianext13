@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { userProfileAction } from "./usersSlice";
+import { updateProfile, userProfileAction } from "./usersSlice";
 import URL from '../utils/URL'
 const origin =
   typeof window !== "undefined" && window.location.origin
@@ -72,7 +72,7 @@ export const postAction = createAsyncThunk(
         { id },
         config
       );
-      profile && dispatch(userProfileAction(user))
+      profile && dispatch(updateProfile(user))
       return data;
     } catch (error) {
       if (!error?.response) throw error;
@@ -103,7 +103,7 @@ export const createCommentAction = createAsyncThunk(
         },
         config
       );
-      comment?.profile && dispatch(userProfileAction(comment.user))
+      comment?.profile && dispatch(updateProfile(comment.user))
 
       return data;
     } catch (error) {

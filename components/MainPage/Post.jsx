@@ -186,7 +186,7 @@ function Post({ direction, post, profile })
                     </form>
                 </div>
                 <div className={`${direction}__posts__container__commentsGroupe__comments`}>
-                    {direction === "user__bottom__postsGroup" ? postComments?.map((comment, inx) => <Comment key={inx} comment={comment} />) : post?.comments?.map((comment, inx) => <Comment key={inx} comment={comment} />)}
+                    {direction === "user__bottom__postsGroup" ? post.comments?.map((comment, inx) => <Comment key={inx} comment={comment} />) : post?.comments?.map((comment, inx) => <Comment key={inx} comment={comment} />)}
                 </div>
             </div>
         </motion.div>

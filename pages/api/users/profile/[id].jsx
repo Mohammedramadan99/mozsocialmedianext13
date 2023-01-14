@@ -17,7 +17,13 @@ handler.get(async (req, res) =>
     //check if user id is valid
     try
     {
-        const user = await User.findById(id).populate('posts')
+        const user = await User.findById(id).populate({
+            path : 'posts',
+            populate : {
+              path : 'comments',
+              options: {sort: {'createdAt' : -1} }
+            }
+          })
         res.json(user);
     } catch (error)
     {
@@ -35,13 +41,24 @@ handler.put(async (req, res) =>
     await db.connect();
     try
     {
-        let user = await User.findById(req.query.id).populate('posts');
+        let user = await User.findById(req.query.id).populate({
+            path : 'posts',
+            populate : {
+              path : 'comments'
+            }
+          });
 
         user = await User.findByIdAndUpdate(req.query.id, req.body, {
             new: true,
             runValidators: true,
             useFindAndModify: false,
-        }).populate('posts');
+        }).populate({
+            path : 'posts',
+            populate : {
+              path : 'comments',
+              options: {sort: {'createdAt' : -1} }
+            }
+          })
 
         res.status(200).json({
             success: true,

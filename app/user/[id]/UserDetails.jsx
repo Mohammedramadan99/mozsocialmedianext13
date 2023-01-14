@@ -3,26 +3,26 @@ import { useDispatch } from 'react-redux'
 import CloseIcon from '@mui/icons-material/Close'
 // import Spinner from '../../components/Spinner'
 import Posts from '../../../components/MainPage/Posts'
-import Sidebar from '../../../components/MainPage/Sidebar'
+import Sidebar from './Sidebar'
 import { useSelector } from 'react-redux'
 import { fetchUsersAction, followUserAction, unfollowUserAction, uploadProfilePhototAction, uploadCoverPhototAction, LoggedInUserAction } from '../../../store/usersSlice'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Edit from '@mui/icons-material/Edit'
 import { useSession } from 'next-auth/react'
+import Spinner from '../../../components/Spinner'
 
-function UserDetails(props)
+function UserDetails({id})
 {
+    
     const router = useRouter()
-    const {data:session} = useSession()
-    const { id } = props.params
     const dispatch = useDispatch()
     const [uploadImage, setUploadImage] = useState("");
     const [imagePreview, setImagePreview] = useState("")
     //User data from store
     const {
         profile,
-        profileLoading,
+        loadingProfile,
         profileImgUpdated,
         followed,
         unFollowed,
@@ -31,7 +31,7 @@ function UserDetails(props)
     } = useSelector(state => state.users);
     const [editPhoto, setEditPhoto] = useState(false)
     const [editCover, setEditCover] = useState(false)
-    
+    // console.log(userAuth)
     // const { likes, dislikes } = useSelector(state => state.post)
     // const comment = useSelector(state => state?.comment);
 
@@ -84,12 +84,12 @@ function UserDetails(props)
         router.push("/")
     }
     
-    useEffect(() => {
-        dispatch(LoggedInUserAction({email:session?.user?.email}))
-    }, [session])
     
-    console.log({session})
-    return (
+    // console.log({session})
+    return loadingProfile ? (
+        <Spinner />
+    ) : (
+        
         <div className='user'>
             {/* {loading ? <Spinner /> : ( */}
                 <>

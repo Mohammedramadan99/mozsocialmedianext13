@@ -1,11 +1,12 @@
 "use client";
 import dynamic from 'next/dynamic'
-import UserDetails from "../../../components/UserDetails/UserDetails"
+import UserDetails from "./UserDetails"
 import { routerAnimation } from '../../../utils/animations'
 import { motion } from "framer-motion";
 import { useSession } from 'next-auth/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { LoggedInUserAction } from '../../../store/usersSlice';
+import { LoggedInUserAction, userProfileAction } from '../../../store/usersSlice';
+import { useEffect } from 'react';
 // import { wrapper } from "../../../store/store"
 // import { fetchUserDetailsAction, fetchUsersAction, LoggedInUserAction, userProfileAction } from "../../../store/usersSlice"
 // import {getCommentsAction} from '../../../store/postsSlice'
@@ -27,6 +28,10 @@ function userDetails(props)
     !userAuth?._id && dispatch(LoggedInUserAction({email:session?.user?.email}))
 
     console.log("params",props.params.id)
+    useEffect(() => {
+      dispatch(userProfileAction(props?.params?.id))
+    }, [dispatch])
+    
   return (
     <motion.div variants={routerAnimation}
         initial="initial"

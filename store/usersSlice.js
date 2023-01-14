@@ -55,7 +55,7 @@ export const loginUserAction = createAsyncThunk(
 // Profile
 export const userProfileAction = createAsyncThunk(
   "user/profile",
-  async ({url,id}, { rejectWithValue, getState, dispatch }) => {
+  async (id, { rejectWithValue, getState, dispatch }) => {
     //get user token
     const user = getState().users;
     const { userAuth } = user;
@@ -68,7 +68,38 @@ export const userProfileAction = createAsyncThunk(
     try
     {
       
-      let link = `${url}/api/users/profile/${id}`;
+      let link = `/api/users/profile/${id}`;
+      const { data } = await axios.get(
+        link, // `http://localhost:3000/api/users/profile/${id}`
+        config
+      );
+
+      return data;
+    } catch (error) {
+      if (!error?.response) {
+        throw error;
+      }
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+// update profile
+export const updateProfile = createAsyncThunk(
+  "user/profile/update",
+  async (id, { rejectWithValue, getState, dispatch }) => {
+    //get user token
+    const user = getState().users;
+    const { userAuth } = user;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+      },
+    };
+    //http call
+    try
+    {
+      
+      let link = `/api/users/profile/${id}`;
       const { data } = await axios.get(
         link, // `http://localhost:3000/api/users/profile/${id}`
         config
@@ -497,6 +528,27 @@ const usersSlices = createSlice({
       state.profileAppErr = null;
       state.profileServerErr = null;
       state.loadingProfile = false;
+    });
+    //update Profile
+    builder.addCase(updateProfile.pending, (state, action) =>
+    {
+      state.loading = true;
+      state.profileAppErr = null;
+      state.profileServerErr = null;
+    });
+    builder.addCase(updateProfile.fulfilled, (state, action) =>
+    {
+      
+      state.profile = action?.payload;
+      state.loading = false;
+      state.profileAppErr = null;
+      state.profileServerErr = null;
+    });
+    builder.addCase(updateProfile.rejected, (state, action) =>
+    {
+      state.profileAppErr = null;
+      state.profileServerErr = null;
+      state.loading = false;
     });
 
     //update
