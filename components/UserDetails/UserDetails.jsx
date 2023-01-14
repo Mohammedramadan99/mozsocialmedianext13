@@ -11,6 +11,7 @@ import Image from 'next/image'
 import Edit from '@mui/icons-material/Edit'
 import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
+import { reset } from '../../store/postsSlice'
 const Spinner = dynamic(() => import('../../components/Spinner'))
 
 function UserDetails({id})
