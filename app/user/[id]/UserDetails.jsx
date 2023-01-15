@@ -87,7 +87,9 @@ function UserDetails({id})
     
     // console.log({session})
     return loadingProfile ? (
-        <Spinner />
+        <div className='profile'>
+            <Spinner />
+        </div>
     ) : (
         
         <div className='user'>
@@ -162,24 +164,32 @@ function UserDetails({id})
                                 <div className="user__editPhoto__box__title">
                                     edit your cover
                                 </div>
-                                <div className="user__editPhoto__box__editCover">
-                                    {imagePreview ? (
-                                        <div className="user__editPhoto__box__editCover__img">
-                                            <img src={imagePreview} alt="Product Preview" />
-                                        </div>
-                                    ) : (
-                                        <input type="file" accept="image/*" onChange={createPostImagesChange} />
-                                    )}
-                                </div>
-                                <div className="user__editPhoto__box__editProfilePhoto">
-                                    <div className="user__editPhoto__box__editProfilePhoto__img">
-                                        <img src={profile?.profilePhoto} alt="profile" />
+                                {loading ? (
+                                    <div className='loading-relative'>
+                                        <Spinner/>
                                     </div>
-                                </div>
+                                ) : (
+                                    <>
+                                        <div className="user__editPhoto__box__editCover">
+                                            {imagePreview ? (
+                                                <div className="user__editPhoto__box__editCover__img">
+                                                    <img src={imagePreview} alt="Product Preview" />
+                                                </div>
+                                            ) : (
+                                                <input type="file" accept="image/*" onChange={createPostImagesChange} />
+                                            )}
+                                        </div>
+                                        <div className="user__editPhoto__box__editProfilePhoto">
+                                            <div className="user__editPhoto__box__editProfilePhoto__img">
+                                                <img src={profile?.profilePhoto} alt="profile" />
+                                            </div>
+                                        </div>
 
-                                <div className="user__editPhoto__box__btn common_btn" onClick={(e) => uploladcoverPhoto(e)}>
-                                    update photos
-                                </div>
+                                        <div className="user__editPhoto__box__btn common_btn" onClick={(e) => uploladcoverPhoto(e)}>
+                                            update photos
+                                        </div>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>

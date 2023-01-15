@@ -1,21 +1,10 @@
 import nc from 'next-connect';
 import Post from '../../../models/Post';
-import User from '../../../models/User';
-import Comment from '../../../models/Comment';
+
 import db from '../../../utils/db/dbConnect';
 import { isAuth } from '../../../utils/auth';
-import photoUpload from '../../../utils/photoUpload';
+
 import cloudinary from "cloudinary";
-import axios from 'axios';
-
-// export async function getPosts () {
-//     await db.connect();
-//     const data = await fetch(`http://localhost:3000/api/posts`);
-//     console.log("#2 mohammedRamadan",data)
-//     await db.disconnect();
-//     return data
-
-// }
 
 cloudinary.config({
     cloud_name: "dtmjc8y9z",

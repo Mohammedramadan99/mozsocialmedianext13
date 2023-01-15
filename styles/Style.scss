@@ -78,6 +78,17 @@ body {
 }
 .mainAlert{
     background-color: $main_color;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    @include flex();
+    span{
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 900;
+    }
 }
 .version{
     position: relative;

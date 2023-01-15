@@ -1,7 +1,6 @@
 import nc from 'next-connect';
 import User from '../../../models/User';
 import db from '../../../utils/db/dbConnect';
-import generateToken from '../../../utils/token/generateToken';
 
 const handler = nc();
 

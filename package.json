@@ -45,6 +45,7 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
+    "request": "^2.79.0",
     "sass": "^1.56.2",
     "sharp": "^0.31.2",
     "swr": "^2.0.0"

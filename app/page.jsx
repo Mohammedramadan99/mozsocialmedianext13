@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 // const MainPage = dynamic(() => import("../components/MainPage/MainPage"));
 import MainPage from '../components/MainPage/MainPage';
 import { wrapper } from "../store/store";
-
+import Alert from './Alert'
 import { motion } from "framer-motion";
 import { routerAnimation } from "../utils/animations";
 import { fetchUsersAction, LoggedInUserAction } from '../store/usersSlice';
@@ -36,6 +36,7 @@ export default function Page(props) {
       animate="animate"
       exit="exit"
     >
+      <Alert/>
       <MainPage />
     </motion.div>
   );

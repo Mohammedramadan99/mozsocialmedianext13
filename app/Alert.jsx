@@ -7,7 +7,7 @@ function MainAlert() {
     <>
       <div className='mainAlert' style={{padding:"5px",fontSize: "12px",fontWeight:"600",color:"white",textAlign:"center"}}>
         <WarningAmberIcon/>
-        some actions will be slow because I use the Shared Cluster of mongodb (free)
+        some actions will be <span> slow </span> because I use <span> the Shared Cluster </span> of mongodb (free)
       </div>
       <div className='version' style={{ position: "fixed", bottom: "0", color: "#e4861b", fontWeight: "700", padding: "5px", fontSize: "15px", textAlign: "center", zIndex: "2000" }}>
       <div className="box">

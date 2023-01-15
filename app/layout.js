@@ -1,3 +1,6 @@
+import dynamic from "next/dynamic";
+
+
 import Navbar from "../components/Layout/Navbar";
 import "../styles/Style.scss";
 
@@ -10,7 +13,6 @@ export default function RootLayout({ children }) {
       <div className="flex min-h-screen flex-col justify-between ">
         <Providers>
           <header>
-              {/* <MainAlert/> */}
               <Navbar />
           </header>
           <main>

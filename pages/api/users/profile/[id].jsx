@@ -19,6 +19,7 @@ handler.get(async (req, res) =>
     {
         const user = await User.findById(id).populate({
             path : 'posts',
+            options: {sort: {'createdAt' : -1} },
             populate : {
               path : 'comments',
               options: {sort: {'createdAt' : -1} }
@@ -54,6 +55,7 @@ handler.put(async (req, res) =>
             useFindAndModify: false,
         }).populate({
             path : 'posts',
+            options: {sort: {'createdAt' : -1} },
             populate : {
               path : 'comments',
               options: {sort: {'createdAt' : -1} }
