@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 // const MainPage = dynamic(() => import("../components/MainPage/MainPage"));
-import MainPage from '../components/MainPage/MainPage';
+import MainPage from './MainPage';
 import { wrapper } from "../store/store";
 // import Alert from './Alert'
 import { motion } from "framer-motion";
@@ -16,17 +16,18 @@ import db from '../utils/db/dbConnect';
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react';
 
-export default function Page() {
+export default function Page(props) {
+  console.log(props)
   const dispatch = useDispatch()
   const {data:session} = useSession()
   
   useEffect(() => { 
     dispatch(fetchPostsAction())
     dispatch(fetchUsersAction(4))
-  }, [])
+  }, [dispatch])
   useEffect(() => {
-    session?.user && dispatch(LoggedInUserAction({email:session?.user?.email}))
-  }, [dispatch,session?.user])
+    dispatch(LoggedInUserAction({email:session?.user?.email}))
+  }, [dispatch,session])
 
   return (
     <motion.div
