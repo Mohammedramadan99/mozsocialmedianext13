@@ -23,11 +23,11 @@ export default function Page(props) {
   
   useEffect(() => { 
     dispatch(fetchPostsAction())
-    dispatch(fetchUsersAction(4))
+    // dispatch(fetchUsersAction(4))
   }, [dispatch])
-  useEffect(() => {
-    dispatch(LoggedInUserAction({email:session?.user?.email}))
-  }, [dispatch,session])
+  // useEffect(() => {
+  //   dispatch(LoggedInUserAction({email:session?.user?.email}))
+  // }, [dispatch,session])
 
   return (
     <motion.div
