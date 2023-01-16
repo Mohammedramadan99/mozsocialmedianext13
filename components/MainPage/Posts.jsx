@@ -50,11 +50,11 @@ function Posts({ direction, user })
         <div className={direction}>
                 <WritePost dir={direction} userDetails={user} />
                 {/* <MyPost /> */}
-                {postloading && (
+                {/* {postloading && (
                     <div style={{position:"relative"}}>
                         <Spinner type="full" />
                     </div>
-                )}
+                )} */}
             {direction === "mainPage__middle" ? (
                     postLists?.map(p => (
                         <motion.div variants={stagger} initial="initial" animate="animate" key = { p._id } className={`${direction}__posts__container`} style={{ position: 'relative' }}>
