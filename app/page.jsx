@@ -31,14 +31,13 @@ export default function Page(props) {
       animate="animate"
       exit="exit"
     >
-      {postloading ? (
-          <div>
+      {/* {postloading && (
+          <div style={{position:"relative"}}>
               <Spinner type="full" />
           </div>
-      ) : (
-        <MainPage />
-      )}
+      )} */}
       {/* <Alert/> */}
+      <MainPage />
     </motion.div>
   );
 }
