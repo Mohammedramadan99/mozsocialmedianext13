@@ -18,7 +18,7 @@ import { useEffect } from 'react';
 
 export default function Page(props) {
   console.log(props)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() 
   const {data:session} = useSession()
   
   useEffect(() => { 
