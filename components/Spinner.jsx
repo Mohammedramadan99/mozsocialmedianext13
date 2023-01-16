@@ -1,12 +1,12 @@
-import React from 'react'
 
 function Spinner({type})
 {
-    return type === "full"  ? (
-        <div className="full">
-            <div className="spinner"></div>
-        </div>
-        ) : (
+    return (
+    // type === "full"  ? (
+    //     <div className="full">
+    //         <div className="spinner"></div>
+    //     </div>
+    //     ) : (
         <div className="spinner"></div>
     )
 }

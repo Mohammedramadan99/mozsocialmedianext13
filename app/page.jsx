@@ -1,22 +1,26 @@
 'use client';
 
+import dynamic from 'next/dynamic';
+// const MainPage = dynamic(() => import("../components/MainPage/MainPage"));
 import MainPage from '../components/MainPage/MainPage';
+import { wrapper } from "../store/store";
+// import Alert from './Alert'
 import { motion } from "framer-motion";
 import { routerAnimation } from "../utils/animations";
 import { fetchUsersAction, LoggedInUserAction } from '../store/usersSlice';
-import { fetchPostsAction} from '../store/postsSlice';
+import { fetchPostsAction, getAllPosts, getCommentsAction, testo } from '../store/postsSlice';
 import { useSession } from 'next-auth/react'
+import db from '../utils/db/dbConnect';
+// import { getPosts } from './api/posts';
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useEffect } from 'react';
-import Spinner from '../components/Spinner';
 
-export default function Page(props) {
+export default function Page() {
   const dispatch = useDispatch()
   const {data:session} = useSession()
-  const { postLists, loading:postloading } = useSelector(state => state.posts)
   
-  useEffect(() => {
+  useEffect(() => { 
     dispatch(fetchPostsAction())
     dispatch(fetchUsersAction(4))
   }, [])
@@ -31,11 +35,6 @@ export default function Page(props) {
       animate="animate"
       exit="exit"
     >
-      {/* {postloading && (
-          <div style={{position:"relative"}}>
-              <Spinner type="full" />
-          </div>
-      )} */}
       {/* <Alert/> */}
       <MainPage />
     </motion.div>

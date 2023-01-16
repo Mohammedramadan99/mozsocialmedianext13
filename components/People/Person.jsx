@@ -1,8 +1,7 @@
 import Link from 'next/link'
-import React from 'react'
-import { useSelector } from 'react-redux'
 import { motion } from 'framer-motion'
 import { fadeInUp, stagger } from '../../utils/animations'
+
 function Person({ dir, user })
 {
     // const { userAuth } = useSelector(state => state.users)
