@@ -73,10 +73,12 @@ export const userProfileAction = createAsyncThunk(
         link, // `http://localhost:3000/api/users/profile/${id}`
         config
       );
-
+      console.log("profileMSG",data)
       return data;
+
     } catch (error) {
       if (!error?.response) {
+      console.log("profileMSG",error)
         throw error;
       }
       return rejectWithValue(error?.response?.data);
@@ -517,14 +519,15 @@ const usersSlices = createSlice({
     });
     builder.addCase(userProfileAction.fulfilled, (state, action) =>
     {
-      
-      state.profile = action?.payload;
+      console.log("profileMSG",action.payload)
+      state.profile = action?.payload?.user;
       state.loadingProfile = false;
       state.profileAppErr = null;
       state.profileServerErr = null;
     });
     builder.addCase(userProfileAction.rejected, (state, action) =>
     {
+      console.log("profileMSG faild",action.payload)
       state.profileAppErr = null;
       state.profileServerErr = null;
       state.loadingProfile = false;
@@ -539,7 +542,7 @@ const usersSlices = createSlice({
     builder.addCase(updateProfile.fulfilled, (state, action) =>
     {
       
-      state.profile = action?.payload;
+      state.profile = action?.payload?.user;
       state.loading = false;
       state.profileAppErr = null;
       state.profileServerErr = null;

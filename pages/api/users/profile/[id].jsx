@@ -2,6 +2,7 @@ import nc from 'next-connect';
 
 import db from '../../../../utils/db/dbConnect';
 import Comment from '../../../../models/Comment';
+import Post from '../../../../models/Post';
 import { isAuth } from '../../../../utils/auth';
 import User from '../../../../models/User';
 const handler = nc();
@@ -17,6 +18,7 @@ handler.get(async (req, res) =>
     //check if user id is valid
     try
     {
+      console.log("profileQ",req.query)
         const user = await User.findById(id).populate({
             path : 'posts',
             options: {sort: {'createdAt' : -1} },
@@ -25,10 +27,17 @@ handler.get(async (req, res) =>
               options: {sort: {'createdAt' : -1} }
             }
           })
-        res.json(user);
+      console.log("profileUSER",user)
+        res.status(200).json({
+          success: true,
+          user
+        });
     } catch (error)
     {
-        res.json(error);
+        res.status(500).json({
+          success: false,
+          message:error.message
+        });
     }
     await db.disconnect();
 })

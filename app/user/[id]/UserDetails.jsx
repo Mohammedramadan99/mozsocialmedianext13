@@ -5,7 +5,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import Posts from '../../../components/MainPage/Posts'
 import Sidebar from './Sidebar'
 import { useSelector } from 'react-redux'
-import { fetchUsersAction, followUserAction, unfollowUserAction, uploadProfilePhototAction, uploadCoverPhototAction, LoggedInUserAction, reset } from '../../../store/usersSlice'
+import { fetchUsersAction, followUserAction, unfollowUserAction, uploadProfilePhototAction, uploadCoverPhototAction, LoggedInUserAction, reset, userProfileAction } from '../../../store/usersSlice'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Edit from '@mui/icons-material/Edit'
@@ -84,7 +84,9 @@ function UserDetails({id})
         router.push("/")
     }
     
-    
+    useEffect(() => {
+        dispatch(userProfileAction(id))
+      }, [id])
     // console.log({session})
     return loadingProfile ? (
         <div className='profile'>

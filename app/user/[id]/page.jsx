@@ -16,6 +16,7 @@ function userDetails(props)
 {
     const {data:session} = useSession()
     const dispatch = useDispatch()
+    const {id} = props.params
     const {
         profile,
         profileLoading,
@@ -25,19 +26,17 @@ function userDetails(props)
         userAuth,
         loading,
     } = useSelector(state => state.users);
-    !userAuth?._id && dispatch(LoggedInUserAction({email:session?.user?.email}))
-
+    !userAuth?._id && session?.user?.email && dispatch(LoggedInUserAction({email:session?.user?.email}))
+    // dispatch(userProfileAction(id))
     console.log("params",props.params.id)
-    useEffect(() => {
-      dispatch(userProfileAction(props?.params?.id))
-    }, [dispatch])
+   
     
   return (
     <motion.div variants={routerAnimation}
         initial="initial"
         animate="animate"
         exit="exit">
-        <UserDetails id={props.params.id} />
+        <UserDetails id={id} />
     </motion.div>
   )
 }

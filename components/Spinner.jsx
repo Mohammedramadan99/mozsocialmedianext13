@@ -1,13 +1,12 @@
 import React from 'react'
 
-function Spinner()
+function Spinner({type})
 {
-    return (
-        // <div className="spinner-parent">
-        //     <div className='spinner'>
-        //         <div className="circle"></div>
-        //     </div>
-        // </div>
+    return type === "full"  ? (
+        <div className="full">
+            <div className="spinner"></div>
+        </div>
+        ) : (
         <div className="spinner"></div>
     )
 }

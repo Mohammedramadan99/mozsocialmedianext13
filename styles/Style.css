@@ -1678,8 +1678,8 @@ header {
   flex-direction: row;
 }
 
-.profile {
-  position: absolute;
+.profile, .full {
+  position: fixed;
   top: 0;
   left: 0;
   background-color: #fff;
@@ -1690,6 +1690,7 @@ header {
   align-items: center;
   gap: 0.625rem;
   flex-direction: row;
+  z-index: 10000;
 }
 
 .spinner {

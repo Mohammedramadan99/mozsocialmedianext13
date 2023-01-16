@@ -1,5 +1,5 @@
 // const mongoose = require("mongoose");
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 const postSchema = new mongoose.Schema(
   {
@@ -44,6 +44,10 @@ const postSchema = new mongoose.Schema(
       ref: "User",
       // required: [true, "Please Author is required"],
     },
+    // comments:[{
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref:"Comment",
+    // }],
     description: {
       type: String,
       // required: [true, "description is required"],

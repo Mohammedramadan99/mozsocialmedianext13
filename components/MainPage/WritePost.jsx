@@ -3,12 +3,13 @@ import PanoramaIcon from '@mui/icons-material/Panorama';
 // import { fetchCategoriesAction } from '../../redux/slices/category/categorySlice'
 import { createpostAction, reset } from '../../store/postsSlice'
 import { useDispatch, useSelector } from 'react-redux';
-import UserDetails from '../UserDetails/UserDetails';
+// import UserDetails from '../UserDetails/UserDetails';
 import Image from 'next/image';
 import { motion } from "framer-motion"
 import {fadeInLeft} from '../../utils/animations'
 import { useSession } from 'next-auth/react';
-function WritePost({ dir, userDetails })
+
+function WritePost({ dir })
 {
     const dispatch = useDispatch()
     const { data: session } = useSession()

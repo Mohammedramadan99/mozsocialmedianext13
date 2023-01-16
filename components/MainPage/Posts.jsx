@@ -52,7 +52,7 @@ function Posts({ direction, user })
                 {/* <MyPost /> */}
                 {postloading && (
                     <div style={{position:"relative"}}>
-                        <Spinner />
+                        <Spinner type="full" />
                     </div>
                 )}
             {direction === "mainPage__middle" ? (

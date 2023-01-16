@@ -3,8 +3,9 @@ import Post from '../../../models/Post';
 
 import db from '../../../utils/db/dbConnect';
 import { isAuth } from '../../../utils/auth';
-
+import Comment from '../../../models/Comment';
 import cloudinary from "cloudinary";
+
 
 cloudinary.config({
     cloud_name: "dtmjc8y9z",
@@ -36,8 +37,14 @@ handler.get(async (req, res) =>
             model: 'User',
         }).populate({
             path:'comments',
+            modal:'Comment',
             options: {sort: {'createdAt' : -1} }
         }).sort('-createdAt')
+        // .populate({
+        //     path:'comments',
+        //     model: "Comment",
+        //     // options: {sort: {'createdAt' : -1} }
+        // })
         // const posts = await Post.find({}).populate('comments').populate('user')
         console.log("#2 got the data",posts)
         res.status(200).json({
