@@ -15,16 +15,22 @@ import db from '../utils/db/dbConnect';
 
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react';
+import axios from 'axios';
 
 export default function Page(props) {
   console.log(props)
   const dispatch = useDispatch()
   const {data:session} = useSession()
   
-  useEffect(() => { 
+  useEffect(()  => { 
     dispatch(fetchPostsAction())
+    // await axios.get('http://localhost:3000/api/testos')
     // dispatch(fetchUsersAction(4))
   }, [dispatch])
+  const getData = async () => {
+    await axios.get('http://localhost:3000/api/testos')
+  }
+  getData()
   // useEffect(() => {
   //   dispatch(LoggedInUserAction({email:session?.user?.email}))
   // }, [dispatch,session])
