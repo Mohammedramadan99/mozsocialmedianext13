@@ -574,39 +574,39 @@ const usersSlices = createSlice({
     });
     //Upload Profile photo
     builder.addCase(uploadCoverPhototAction.pending, (state, action) => {
-      state.loading = true;
+      state.uploadPhoto = true;
       state.appErr = null;
       state.serverErr = null;
     });
     builder.addCase(uploadCoverPhototAction.fulfilled, (state, action) => {
       state.profile = action?.payload;
       state.profileImgUpdated = true;
-      state.loading = false;
+      state.uploadPhoto = false;
       state.appErr = null;
       state.serverErr = null;
     });
     builder.addCase(uploadCoverPhototAction.rejected, (state, action) => {
       state.appErr = action?.payload || action.payload?.error?.message;
       state.serverErr = action?.error?.message;
-      state.loading = false;
+      state.uploadPhoto = false;
     });
     //Upload Profile photo
     builder.addCase(uploadProfilePhototAction.pending, (state, action) => {
-      state.loading = true;
+      state.uploadPhoto = true;
       state.appErr = null;
       state.serverErr = null;
     });
     builder.addCase(uploadProfilePhototAction.fulfilled, (state, action) => {
       state.profilePhoto = action?.payload;
       state.profileImgUpdated = true;
-      state.loading = false;
+      state.uploadPhoto = false;
       state.appErr = null;
       state.serverErr = null;
     });
     builder.addCase(uploadProfilePhototAction.rejected, (state, action) => {
       state.appErr = action?.payload || action.payload?.error?.message;
       state.serverErr = action?.error?.message;
-      state.loading = false;
+      state.uploadPhoto = false;
     });
     //logout
     builder.addCase(logoutAction.pending, (state, action) => {

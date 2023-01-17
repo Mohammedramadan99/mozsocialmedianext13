@@ -28,6 +28,7 @@ function UserDetails({id})
         unFollowed,
         userAuth,
         loading,
+        uploadPhoto,
     } = useSelector(state => state.users);
     const [editPhoto, setEditPhoto] = useState(false)
     const [editCover, setEditCover] = useState(false)
@@ -166,32 +167,29 @@ function UserDetails({id})
                                 <div className="user__editPhoto__box__title">
                                     edit your cover
                                 </div>
-                                {loading ? (
-                                    <div className='loading-relative'>
-                                        <Spinner/>
-                                    </div>
-                                ) : (
-                                    <>
-                                        <div className="user__editPhoto__box__editCover">
-                                            {imagePreview ? (
-                                                <div className="user__editPhoto__box__editCover__img">
-                                                    <img src={imagePreview} alt="Product Preview" />
-                                                </div>
-                                            ) : (
-                                                <input type="file" accept="image/*" onChange={createPostImagesChange} />
-                                            )}
-                                        </div>
-                                        <div className="user__editPhoto__box__editProfilePhoto">
-                                            <div className="user__editPhoto__box__editProfilePhoto__img">
-                                                <img src={profile?.profilePhoto} alt="profile" />
+                                
+                                    <div className="user__editPhoto__box__editCover">
+                                        {imagePreview ? (
+                                            <div className="user__editPhoto__box__editCover__img">
+                                                <img src={imagePreview} alt="Product Preview" />
                                             </div>
+                                        ) : (
+                                            <input type="file" accept="image/*" onChange={createPostImagesChange} />
+                                        )}
+                                    </div>
+                                    <div className="user__editPhoto__box__editProfilePhoto">
+                                        <div className="user__editPhoto__box__editProfilePhoto__img">
+                                            <img src={profile?.image} alt="profile" />
                                         </div>
+                                    </div>
 
-                                        <div className="user__editPhoto__box__btn common_btn" onClick={(e) => uploladcoverPhoto(e)}>
-                                            update photos
-                                        </div>
-                                    </>
-                                )}
+                                    <button className="user__editPhoto__box__btn common_btn" onClick={(e) => uploladcoverPhoto(e)} disabled={imagePreview ? false : true}>
+                                        {uploadPhoto ? (
+                                            <Spinner/>
+                                        ) : (
+                                            <>update photos</>
+                                        )}
+                                    </button>
                             </div>
                         </div>
                     </div>

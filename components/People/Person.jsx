@@ -9,7 +9,7 @@ function Person({ dir, user })
     return (
         <motion.div variants={fadeInUp} initial="initial" animate="animate"  className={`${dir}__person`}>
             <div className={`${dir}__person__img`}>
-                <img src={user?.profilePhoto} alt="profilePhoto" />
+                <img src={user?.image} alt="profilePhoto" />
             </div>
             <div className={`${dir}__person__info`}>
                 <div className={`${dir}__person__info__name`}>

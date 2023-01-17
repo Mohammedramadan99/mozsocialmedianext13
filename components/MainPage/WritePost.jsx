@@ -8,16 +8,17 @@ import Image from 'next/image';
 import { motion } from "framer-motion"
 import {fadeInLeft} from '../../utils/animations'
 import { useSession } from 'next-auth/react';
+import Spinner from '../Spinner';
 
 function WritePost({ dir })
 {
     const dispatch = useDispatch()
     const { data: session } = useSession()
-    const { userAuth, usersList } = useSelector(state => state.users)
+    
     // const currUser = usersList?.find(u => u._id === userAuth?._id)
     const currUser = session?.user
 
-    const { isCreated, loading } = useSelector(state => state.posts)
+    const { isCreated, createPostLoading  } = useSelector(state => state.posts)
     // const { categoryList } = useSelector(state => state?.category)
     const [message, setMessage] = useState('')
     const [images, setImages] = useState('');
@@ -143,9 +144,15 @@ function WritePost({ dir })
                         </div>
                         photo
                     </div>
-                    <button className={`${dir}__writePost__bottom__btn`} style={description ? { opacity: "1" } : { opacity: ".3" }} onClick={e => createProductSubmitHandler(e)}>
-                        post
-                    </button>
+                    {createPostLoading ? (
+                        <>
+                            <Spinner/>
+                        </>
+                    ) : (
+                        <button className={`${dir}__writePost__bottom__btn`} style={description ? { opacity: "1" } : { opacity: ".3" }} onClick={e => createProductSubmitHandler(e)}>
+                            post
+                        </button>
+                    )}
                 </div>
             </>
             {/* )} */}

@@ -1310,6 +1310,9 @@ header {
   font-weight: 700;
   padding-bottom: 20px;
 }
+.user__editPhoto__box__editCover {
+  height: 300px;
+}
 .user__editPhoto__box__editCover__img {
   width: 100%;
   height: 300px;

@@ -13,7 +13,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import { useRef } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { logoutAction } from '../../store/usersSlice'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
@@ -22,6 +22,9 @@ function Navbar()
     const { data: session } = useSession()
     const dispatch = useDispatch()
     const router = useRouter()
+    const pathname = usePathname()
+
+    console.log("router", router)
     let dropdownref = useRef()
     const store = useSelector(state => state?.users)
     const { userAuth,loggedOut, usersList } = store
@@ -103,7 +106,7 @@ function Navbar()
                     {/* <div className="row"> */}
                         {icons?.map((item, i) => (
                             <Link href={`${item.link}`} key={i} title={item.title}
-                                className={router.asPath == item.link ? 'col mainNav__middle__link active' : 'col mainNav__middle__link'}
+                                className={pathname == item.link ? 'col mainNav__middle__link active' : 'col mainNav__middle__link'}
                                 onClick={() => setActivePage(item.title)}  >
                                 {item.icon}
                             </Link>
@@ -126,7 +129,7 @@ function Navbar()
                     <div className="mainNav__right__item nav-icon" onClick={() => setNotificationOpened(!notificationOpened)}>
                         <NotificationsIcon />
                     </div>
-                    <div className="mainNav__right__item nav-icon " onClick={() => setOpened(!opened)}>
+                    <div className="mainNav__right__item nav-icon " onClick={() => setOpened(!opened)}> 
                         <SettingsIcon />
                     </div>
 
@@ -139,7 +142,8 @@ function Navbar()
                         )}
                     </ul>
                     <ul className={notificationOpened ? `mainNav__right__dropDown notifications active` : "mainNav__right__dropDown inactive"} >
-                        <h6 style={{padding:"20px 20px 10px"}}> last 4 notifications </h6>
+                        {/* <h6 style={{padding:"20px 20px 10px"}}> last 4 notifications </h6> */}
+                        <div style={{padding:"10px",fontSize:"15px",textAlign:'center'}}>soon with Version 2</div>
                         {/* {userAuth && allNotifications?.length > 1 ? allNotifications?.map(item => <NotificationsItem text={item.title} userImg={item?.reactedUser?.profilePhoto} />) : (
                             <div style={{padding:"20px"}}>
                                 there is no notifications now
