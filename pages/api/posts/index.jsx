@@ -40,13 +40,7 @@ handler.get(async (req, res) =>
             modal:'Comment',
             options: {sort: {'createdAt' : -1} }
         }).sort('-createdAt')
-        // .populate({
-        //     path:'comments',
-        //     model: "Comment",
-        //     // options: {sort: {'createdAt' : -1} }
-        // })
-        // const posts = await Post.find({}).populate('comments').populate('user')
-        console.log("#2 got the data",posts)
+        
         res.status(200).json({
             success:true,
             posts
