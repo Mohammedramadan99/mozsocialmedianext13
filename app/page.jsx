@@ -13,13 +13,14 @@ import { useSession } from 'next-auth/react'
 import db from '../utils/db/dbConnect';
 // import { getPosts } from './api/posts';
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import axios from 'axios';
+import Spinner from '../components/Spinner';
 
 export default function Page(props) {
-  console.log(props)
   const dispatch = useDispatch()
+  const { postLists, loading:postloading } = useSelector(state => state.posts)
   const {data:session} = useSession()
   
   useEffect(()  => { 
@@ -42,6 +43,11 @@ export default function Page(props) {
       exit="exit"
     >
       {/* <Alert/> */}
+      {postloading && (
+          <div style={{position:"relative"}}>
+              <Spinner type="full" />
+          </div>
+      )}
       <MainPage />
     </motion.div>
   );
