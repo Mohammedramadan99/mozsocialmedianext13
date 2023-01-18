@@ -100,20 +100,7 @@ function Post({ direction, post, profile })
     //     setSortedComments(post?.comments)
     //     console.log("setSortedCommentsHere",sortedComments)
     // }, [post])
-    useEffect(() => {
-
-        // const arr  = [post.comments].sort((a, b) =>{a.createdAt.localeCompare(b.createdAt)})
-        // setSortedComments(prev =>
-        //     [...prev].sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-        // )
-        console.log("commentsAfter",comments)
-        console.log("postAfter",post)
-        // setSortedComments(comments?.filter(comment => comment.post === post._id))
-        // console.log("setSortedCommentsAfter",sortedComments)
-        // setSortedComments(arr.sort((a, b) =>  a.createdAt.localeCompare(b.createdAt)))
-        // const post.comments.sort((a,b) => new Moment(a.createdAt).format('YYYYMMDD') - new Moment(b.createdAt).format('YYYYMMDD'))
-        // console.log({setSortedComments})
-    }, [comments])
+    
     
     return (
         <motion.div variants={fadeInUp}>
@@ -185,9 +172,13 @@ function Post({ direction, post, profile })
                         
                     </form>
                 </div>
-                <div className={`${direction}__posts__container__commentsGroupe__comments`}>
-                    {direction === "user__bottom__postsGroup" ? post.comments?.map((comment, inx) => <Comment key={inx} comment={comment} />) : post?.comments?.map((comment, inx) => <Comment key={inx} comment={comment} />)}
-                </div>
+                {showComments && (
+                    <div className={`${direction}__posts__container__commentsGroupe__comments`}>
+                        {direction === "user__bottom__postsGroup" ?
+                        post.comments?.map((comment, inx) => <Comment key={inx} comment={comment} />) 
+                        : post?.comments?.map((comment, inx) => <Comment key={inx} comment={comment} />)}
+                    </div>
+                ) }
             </div>
         </motion.div>
     )
