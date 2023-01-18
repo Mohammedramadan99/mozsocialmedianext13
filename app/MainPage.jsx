@@ -18,22 +18,6 @@ import { fetchUsersAction } from '../store/usersSlice';
 
 function MainPage()
 {
-    const {data:session} = useSession()
-    const dispatch = useDispatch()
-  
-//   dispatch(fetchPostsAction())
-//   dispatch(fetchUsersAction(4))
-    
-    // useEffect(() =>
-    // {
-    //     if (userAuth === null)
-    //     {
-    //         router.push('/login')
-    //     }
-    // }, [])
-    useEffect(() => {
-        // dispatch(LoggedInUserAction({email:session?.user?.email}))
-    }, [session])
     return (
         <div className='mainPage'>
             <div className="mainPage-container">

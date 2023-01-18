@@ -17,8 +17,8 @@ handler.post(async (req, res) =>
             name: req?.body?.name,
             email: req?.body?.email,
             password: req?.body?.password,
+            accountType:"normal"
         });
-        res.json(user);
         res.status(200).json({
             success: true ,
             user
@@ -31,7 +31,6 @@ handler.post(async (req, res) =>
         });
     }
     await db.disconnect();
-
 });
 
 export default handler;

@@ -16,35 +16,16 @@ import { fadeInUp, stagger } from '../utils/animations'
 import { useSession } from 'next-auth/react'
 
 function Sidebar()
-{ 
-    const {data:session} = useSession()
-    const dispatch = useDispatch()
-    // const userAuth = session?.user
-    const router = useRouter()
+{    const router = useRouter()
     const users = useSelector(state => state.users)
     // const [userAuth, setuserAuth] = useState({})
     const { usersList, profile, userAuth,
         usersCount,
         appErr } = users
         console.log("usersList #11",usersList)
-    const [loggedIn, setLoggedIn] = useState(false)
     const usersFiltered = usersList !== {} && usersList && usersList?.filter(user => user?._id !== userAuth?._id)
-    const followUserHandler = (id) =>
-    {
-        // dispatch(followUserAction(id))
-    }
-    const followStatus = (user) =>
-    {
-        const loggedInUser = usersList?.find(u => u?._id === userAuth?._id)
-        const otherUsers = usersList !== {} && usersList?.filter(u => u?._id !== userAuth?._id)
-        const status = loggedInUser?.following?.find(uId => uId === user?._id)
-    }
-        // console.log(status)
 
-    useEffect(() =>
-    {
-        const user = usersList?.find(u => u?._id === userAuth?._id)
-    }, [usersList])
+        // console.log(status)
 
     return (
         <div className='mainPage__left__sidebar'>

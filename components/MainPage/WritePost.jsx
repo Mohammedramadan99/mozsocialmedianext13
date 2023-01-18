@@ -14,9 +14,10 @@ function WritePost({ dir })
 {
     const dispatch = useDispatch()
     const { data: session } = useSession()
+    const { userAuth } = useSelector(state => state.users)
     
     // const currUser = usersList?.find(u => u._id === userAuth?._id)
-    const currUser = session?.user
+    const currUser = !userAuth ? session?.user : userAuth
 
     const { isCreated, createPostLoading  } = useSelector(state => state.posts)
     // const { categoryList } = useSelector(state => state?.category)

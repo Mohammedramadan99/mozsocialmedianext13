@@ -5,6 +5,7 @@ import { wrapper } from "../store/store";
 // import {store} from '../store/store'
 import { AnimatePresence } from "framer-motion";
 // import { PersistGate } from "redux-persist/integration/react";
+import { PersistGate } from "redux-persist/integration/react";
 function Providers({children,...rest}) {
   
   const {store, props} = wrapper.useWrappedStore(rest);
@@ -12,9 +13,9 @@ function Providers({children,...rest}) {
     return (
     <AnimatePresence mode="wait">
       <SessionProvider>
-        <Provider store={store}>
+        <PersistGate persistor={store.__persistor} loading={<div>Loading...</div>}>
           {children}
-        </Provider>
+        </PersistGate>
       </SessionProvider>
     </AnimatePresence>
     )   

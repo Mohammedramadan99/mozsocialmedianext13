@@ -6,10 +6,6 @@ import { fadeInUp } from '../../utils/animations'
 import {motion} from 'framer-motion'
 export default function Person({ user })
 {
-    const users = useSelector(state => state.users)
-
-    const { userAuth, usersList } = users
-
     return (
         <motion.div variants={fadeInUp} className="mainPage__left__sidebar__G2__persons__person" >
             <Link href={`/user/${user?._id}`} className="mainPage__left__sidebar__G2__persons__person__info" style={{ color: "#000" }}>

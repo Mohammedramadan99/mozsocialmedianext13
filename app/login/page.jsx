@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import dynamic from 'next/dynamic'
-const Intro = dynamic(() => import('../../components/Auth/Intro'))
+const Intro = dynamic(() => import('../register/Intro'))
 
 // import Intro from '../components/Auth/Intro'
 import { loginUserAction, reset } from '../../store/usersSlice'
@@ -35,11 +35,11 @@ export default function login()
         e.preventDefault()
         dispatch(loginUserAction(formData))
     }
-    // if (userAuth)
-    // {
-    //     dispatch(reset())
-    //     router.push("/");
-    // }
+    if (userAuth)
+    {
+        dispatch(reset())
+        router.push("/");
+    }
     const { data: session } = useSession()
     useEffect(() =>
     {
