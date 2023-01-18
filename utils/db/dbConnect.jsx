@@ -21,8 +21,8 @@ async function connect()
   }
   mongoose.set("strictQuery", false);
   
-  const db = await mongoose.connect(process.env.MONGODB_URL)
-  // const db = await mongoose.connect('mongodb+srv://Ecommerce:m1964118@cluster0.7n14b.mongodb.net/mozsm'); // "mongodb://localhost:27017/mozSocialMedia" // 'mongodb+srv://Ecommerce:m1964118@cluster0.7n14b.mongodb.net/mozSocialMedia' // "mongodb://localhost:27017/mozSocialMedia"
+  // const db = await mongoose.connect(process.env.MONGODB_URL)
+  const db = await mongoose.connect('mongodb+srv://Ecommerce:m1964118@cluster0.7n14b.mongodb.net/mozsm'); // "mongodb://localhost:27017/mozSocialMedia" // 'mongodb+srv://Ecommerce:m1964118@cluster0.7n14b.mongodb.net/mozSocialMedia' // "mongodb://localhost:27017/mozSocialMedia"
   // const db = await mongoose.connect("mongodb://0.0.0.0:27017/mozSocialMedia"); // "mongodb://localhost:27017/mozSocialMedia" // 'mongodb+srv://Ecommerce:m1964118@cluster0.7n14b.mongodb.net/mozSocialMedia' // "mongodb://localhost:27017/mozSocialMedia"
   
   console.log('new connection');
