@@ -4,33 +4,12 @@ const MainAlert = dynamic(
     () => import('./MainAlert'),
     { ssr: false }
 )
-// import { ToastContainer } from "react-toastify";
-// import { Menu } from "@headlessui/react";
-// import "react-toastify/dist/react-toastify.css";
-
-// import DropdownLink from "../DropdownLink";
-// import Navbar from "./Navbar";
 const Navbar = dynamic(
     () => import('./Navbar'),
     { ssr: false }
 )
-// import { Open_Sans } from "@next/font/google";
-// const open_Sans = Open_Sans({
-//     weight: '400',
-//     subsets: ['latin'],
-
-// });
 export default function Layout({ title, children })
 {
-    // const { status, data: session } = useSession();
-
-
-
-    // const logoutClickHandler = () => {
-    //   Cookies.remove("cart");
-    //   dispatch({ type: "CART_RESET" });
-    //   signOut({ callbackUrl: "/login" });
-    // };
     return (
         <>
             <Head>

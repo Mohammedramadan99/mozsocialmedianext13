@@ -13,6 +13,7 @@ const bindMiddleware = (middleware) => {
   // if (process.env.NODE_ENV !== 'production') { // because we don't want redux dev tool to run in production
     const { composeWithDevTools } = require('redux-devtools-extension');
     return composeWithDevTools(applyMiddleware(...middleware));
+    
   // }
 // return applyMiddleware(...middleware);
 };

@@ -4,7 +4,7 @@ import Friend from '../../../components/UserDetails/Friend'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import SchoolIcon from '@mui/icons-material/School';
 import EditIcon from '@mui/icons-material/Edit';
-import {reset, updateUserAction,userProfileAction} from '../../../store/usersSlice'
+import {reset, updateUserAction} from '../../../store/usersSlice'
 import FollowPersons from '../../../components/UserDetails/FollowPersons';
 import { motion } from 'framer-motion'
 import { fadeInUp, stagger } from '../../../utils/animations';

@@ -9,9 +9,7 @@ handler.post(async (req, res) =>
     await db.connect();
     const userExists = await User.findOne({ email: req?.body?.email });
 
-    if (userExists) throw new Error("User already exists");
-    try
-    {
+    if (!userExists) {
         //Register user
         const user = await User.create({
             name: req?.body?.name,
@@ -23,12 +21,9 @@ handler.post(async (req, res) =>
             success: true ,
             user
         });
-    } catch (error)
-    {
-        res.status(500).json({
-            success: false,
-            message: error.message
-        });
+    } else {
+        res.status(401);
+        throw new Error("User already exists");
     }
     await db.disconnect();
 });

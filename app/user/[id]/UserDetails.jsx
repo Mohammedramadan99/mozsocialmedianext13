@@ -5,11 +5,11 @@ import CloseIcon from '@mui/icons-material/Close'
 import Posts from '../../../components/MainPage/Posts'
 import Sidebar from './Sidebar'
 import { useSelector } from 'react-redux'
-import { fetchUsersAction, followUserAction, unfollowUserAction, uploadProfilePhototAction, uploadCoverPhototAction, LoggedInUserAction, reset, userProfileAction } from '../../../store/usersSlice'
+import { followUserAction, unfollowUserAction, uploadProfilePhototAction, uploadCoverPhototAction, LoggedInUserAction, reset, userProfileAction } from '../../../store/usersSlice'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Edit from '@mui/icons-material/Edit'
-import { useSession } from 'next-auth/react'
+
 import Spinner from '../../../components/Spinner'
 
 function UserDetails({id})

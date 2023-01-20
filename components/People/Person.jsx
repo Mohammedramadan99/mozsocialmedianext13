@@ -4,7 +4,6 @@ import { fadeInUp, stagger } from '../../utils/animations'
 
 function Person({ dir, user })
 {
-    // const { userAuth } = useSelector(state => state.users)
 
     return (
         <motion.div variants={fadeInUp} initial="initial" animate="animate"  className={`${dir}__person`}>

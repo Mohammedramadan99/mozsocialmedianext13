@@ -1,17 +1,19 @@
 'use client';
+import dynamic from 'next/dynamic';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/navigation'
 import Intro from './Intro'
+
 import { registerUserAction, reset } from '../../store/usersSlice'
 import Link from 'next/link'
+const Alert = dynamic(() => import('../../components/Alert'))
 export default function Page()
 {
     const dispatch = useDispatch()
     const router = useRouter()
     //select state from store
-    const storeData = useSelector(store => store?.users);
-    const { loading, appErr, serverErr, registered } = storeData;
+    const { appErr, registered } = useSelector(store => store?.users);
     const [formError, setFormError] = useState("")
     const [formData, setFormDate] = useState({
         name: "",
@@ -39,13 +41,13 @@ export default function Page()
     }
     useEffect(() =>
     {
-        if (appErr)
-        {
-            dispatch(reset())
-        }
+        // if (appErr)
+        // {
+            // setErr(appErr)
+            // dispatch(reset())
+        // }
         if (registered)
         {
-            dispatch(reset())
             router.push("/login");
         }
     }, [registered, appErr])
@@ -57,7 +59,6 @@ export default function Page()
             </div>
             <div className="register__right">
                 <form className="register__right__form" onSubmit={submitHandler}>
-                    {appErr || formError && <div style={{ border: "1px solid #f00", color: "#f00", padding: "10px 20px", fontWeight: "500" }}> {appErr || formError} </div>}
                     <input type="text" placeholder='name' name="name" onChange={onChange} />
                     <input type="email" placeholder='email' name="email" onChange={onChange} />
                     <input type="password" placeholder='password' name="password" onChange={onChange} />
@@ -67,6 +68,11 @@ export default function Page()
                     </Link>
                 </form>
             </div>
+            {
+                formError || appErr ? (
+                    <Alert content={formError ||appErr} type='error' />
+                ) : null
+            }
         </div >
     )
 }

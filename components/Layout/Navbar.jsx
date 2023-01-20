@@ -16,7 +16,8 @@ import { useRef } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { logoutAction } from '../../store/usersSlice'
 import Image from 'next/image'
-import { useSession } from 'next-auth/react'
+import {useSession,signIn,signOut} from 'next-auth/react'
+
 function Navbar()
 {
     const { data: session } = useSession()
@@ -51,10 +52,15 @@ function Navbar()
     const [activePage, setActivePage] = useState('Home')
     const [opened, setOpened] = useState(false)
     const [notificationOpened, setNotificationOpened] = useState(false)
-    // const currUser = usersList?.find(u => u?._id === userAuth?._id)
     const logoutHandler = () =>
     {
-        dispatch(logoutAction())
+        if(session){
+
+            signOut()
+            dispatch(logoutAction())
+        } else {
+            dispatch(logoutAction())
+        }
     }
     useEffect(() =>
     {
@@ -73,22 +79,6 @@ function Navbar()
             document.removeEventListener("mousedown", handler)
         }
     })
-    useEffect(() =>
-    {
-        if (loggedOut)
-        {
-            router.push('/login')
-        }
-    }, [loggedOut])
-    // useEffect(() => {
-        // dispatch(fetchNotificationsAction())
-    // }, [])
-    // useEffect(() =>
-    // {
-        // dispatch(fetchUsersAction(4))
-        // dispatch(LoggedInUserAction(session?.user?.email))
-    // }, [session?.user])
-    
     return (
         <div className="mainNav">
             <div className="nav-container" >
@@ -137,7 +127,7 @@ function Navbar()
                         {userAuth && (
                             <DropdownItem icon={<LogoutIcon />} text="logout" func={logoutHandler} />
                         )}
-                        {!userAuth && (
+                        {!userAuth  && (
                             <DropdownItem icon={<LoginIcon />} text="login" func={() => router.push('/login')} />
                         )}
                     </ul>
