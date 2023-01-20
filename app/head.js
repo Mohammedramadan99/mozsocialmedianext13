@@ -9,7 +9,7 @@ export default function Head() {
       />
       
       {/* robots for SEO */}
-      <meta name="robots" content="noindex,nofollow" /> 
+      {/* <meta name="robots" content="noindex,nofollow" />  */}
       <meta name="robots" content="all" />
       <meta name="googlebot" content="noindex,nofollow" />
 

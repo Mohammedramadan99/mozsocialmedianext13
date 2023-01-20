@@ -132,12 +132,9 @@ function Post({ direction, post, profile })
                     <div className={`${direction}__posts__container__post__numbers__likesNums"`}>
                         <div className={`${direction}__posts__container__post__numbers__commentsNums`}>
                             <>
-                                <span> {post?.likes?.length} <strong> like </strong> </span>
-                                <span> {post?.disLikes?.length} <strong> dislike </strong> </span>
-                                <span> {
-                                    // direction === "user__bottom__postsGroup" ? postComments?.length : post?.comments?.length
-                                    post?.comments?.length
-                                } <strong> comments </strong> </span>
+                                <span style={{fontWeight:"700"}}> {post?.likes?.length}  like  </span>
+                                <span style={{fontWeight:"700"}}> {post?.disLikes?.length}  dislike  </span>
+                                <span style={{fontWeight:"700"}}> {post?.comments?.length}  comments  </span>
                             </>
                         </div>
                     </div>
