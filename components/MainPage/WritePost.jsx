@@ -16,11 +16,9 @@ function WritePost({ dir })
     const { data: session } = useSession()
     const { userAuth } = useSelector(state => state.users)
     
-    // const currUser = usersList?.find(u => u._id === userAuth?._id)
     const currUser = !userAuth ? session?.user : userAuth
 
     const { isCreated, createPostLoading  } = useSelector(state => state.posts)
-    // const { categoryList } = useSelector(state => state?.category)
     const [message, setMessage] = useState('')
     const [images, setImages] = useState('');
     const [description, setDescription] = useState('');
@@ -31,8 +29,6 @@ function WritePost({ dir })
     })
     // for checking 
     const [addImg, setAddImg] = useState(false)
-    // for inputs
-    const [postContent, setPostContent] = useState(null)
 
     const createProductSubmitHandler = (e) =>
     {
@@ -93,23 +89,8 @@ function WritePost({ dir })
             dispatch(reset())
         }
     }, [isCreated])
-    // useEffect(() =>
-    // {
-    //     if (isCreated)
-    //     {
-    //         setImagesPreview("")
-    //         setFormDate({
-    //             description: "",
-    //             category: "",
-    //         })
-    //     }
-    //     setAddImg(false)
-    // }, [isCreated])
-
-    // === "mainPage__middle" ? "mainPage__middle__writePost" : dir === "userDetails" && "userDetails__writePost"
     return (
         <motion.div variants={fadeInLeft} initial="initial" animate="animate" className={`${dir}__writePost`}>
-            {/* {loading ? <p>loading ... </p> : ( */}
             <p> {message} </p>
             <>
                 <div className={`${dir}__writePost__user`}>

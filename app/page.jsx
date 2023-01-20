@@ -24,7 +24,7 @@ export default function Page() {
   useEffect(() => {
     session && !userAuth && dispatch(LoggedInUserAction({email:session?.user?.email}))
   }, [dispatch,session])
-  if (userAuth === null)
+  if (userAuth === null || !userAuth || userAuth === {})
       {
           router.push('/login')
       }

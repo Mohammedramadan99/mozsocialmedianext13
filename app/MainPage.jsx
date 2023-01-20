@@ -9,7 +9,7 @@ function MainPage()
         <div className='mainPage'>
             <div className="mainPage-container">
                  <div className="mainPage__left"> <Sidebar /> </div>
-                <Posts direction="mainPage__middle" /> 
+                <Posts direction="mainPage__middle" />
             </div>
         </div>
     )
