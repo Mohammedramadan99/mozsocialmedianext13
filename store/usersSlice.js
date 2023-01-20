@@ -353,7 +353,7 @@ const usersSlices = createSlice({
     userAuth:
       process.browser && JSON.parse(localStorage.getItem("userInfo"))
         ? JSON.parse(localStorage.getItem("userInfo"))
-        : {},
+        : null,
     usersList: [],
     appErr: null,
     serverErr: null,
