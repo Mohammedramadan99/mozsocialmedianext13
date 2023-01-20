@@ -24,10 +24,13 @@ export default function Page() {
   useEffect(() => {
     session && !userAuth && dispatch(LoggedInUserAction({email:session?.user?.email}))
   }, [dispatch,session])
-  if (userAuth === null || !userAuth || userAuth === {})
-      {
-          router.push('/login')
-      }
+  useEffect(() => {
+    if (userAuth === null || !userAuth || userAuth === {})
+    {
+        router.push('/login')
+    }
+  }, [userAuth,session])
+  
   return (
     <motion.div
       variants={routerAnimation} 
