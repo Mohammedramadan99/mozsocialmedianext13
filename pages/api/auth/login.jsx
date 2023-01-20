@@ -21,6 +21,7 @@ handler.post(async (req, res) =>
                 name: userFound?.name,
                 email: userFound?.email,
                 image: userFound?.image,
+                coverPhoto: userFound?.coverPhoto,
                 isAdmin: userFound?.isAdmin,
                 token: generateToken(userFound?._id),
                 isVerified: userFound?.isAccountVerified,

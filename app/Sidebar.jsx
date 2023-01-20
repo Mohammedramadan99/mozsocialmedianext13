@@ -19,13 +19,14 @@ function Sidebar()
         usersCount,} = users
         console.log("usersList #11",usersList)
     const usersFiltered = usersList !== {} && usersList && usersList?.filter(user => user?._id !== userAuth?._id)
+    console.log("coverUser",userAuth)
     return (
         <div className='mainPage__left__sidebar'>
             <div className="mainPage__left__sidebar__G1">
                 <Link  href={`/user/${userAuth?._id}`} className="mainPage__left__sidebar__G1__Imgs">
                     <div className="mainPage__left__sidebar__G1__Imgs__coverImg">
                         <div style={{ height: "200px" }}>
-                            {userAuth?.coverPhoto && <Image src={userAuth?.coverPhoto} alt="photo" fill={true} style={{objectFit:'cover'}} />}
+                            {userAuth && <Image src={userAuth?.coverPhoto} alt="photo" fill={true} style={{objectFit:'cover'}} />}
                         </div>
                     </div>
                     <div className="mainPage__left__sidebar__G1__Imgs__profileImg img__rounded">
