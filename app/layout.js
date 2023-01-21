@@ -1,6 +1,3 @@
-import dynamic from "next/dynamic";
-
-
 import Navbar from "../components/Layout/Navbar";
 import "../styles/Style.scss";
 

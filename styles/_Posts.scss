@@ -85,7 +85,9 @@
                         &:hover {
                             background-color: #eee;
                         }
-
+                        button{
+                            font-size: clamp(5px,10px ,15px);
+                        }
                         &.active {
                             color: $main_color;
                             svg{

@@ -358,11 +358,27 @@ header {
   grid-template-columns: 2fr 5fr;
 }
 @media (max-width: 768px) {
+  .mainPage {
+    padding-left: 0;
+    padding-right: 0;
+  }
   .mainPage__left {
     display: none;
   }
   .mainPage .mainPage-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(400px, 1fr);
+  }
+}
+@media (width < 500px) {
+  .mainPage {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .mainPage__left {
+    display: none;
+  }
+  .mainPage .mainPage-container {
+    width: 250px;
   }
 }
 .mainPage__left__sidebar {
@@ -569,6 +585,10 @@ header {
 .mainPage__middle__posts__container__post__actions__item.active,
 .mainPage__middle__posts__container__post__actions__item:hover {
   background-color: #eee;
+}
+.user__bottom__postsGroup__posts__container__post__actions__item button,
+.mainPage__middle__posts__container__post__actions__item button {
+  font-size: 10px;
 }
 .user__bottom__postsGroup__posts__container__post__actions__item.active,
 .mainPage__middle__posts__container__post__actions__item.active {
