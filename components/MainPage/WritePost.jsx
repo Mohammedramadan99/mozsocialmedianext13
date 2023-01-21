@@ -18,7 +18,7 @@ function WritePost({ dir })
     
     const currUser = !userAuth ? session?.user : userAuth
 
-    const { isCreated, createPostLoading  } = useSelector(state => state.posts)
+    const { isCreated, createPostLoading, appErr } = useSelector(state => state.posts)
     const [message, setMessage] = useState('')
     const [images, setImages] = useState('');
     const [description, setDescription] = useState('');
@@ -91,7 +91,7 @@ function WritePost({ dir })
     }, [isCreated])
     return (
         <motion.div variants={fadeInLeft} initial="initial" animate="animate" className={`${dir}__writePost`}>
-            <p> {message} </p>
+            <p> {appErr} </p>
             <>
                 <div className={`${dir}__writePost__user`}>
                     <div className={`${dir}__writePost__user__img img__rounded`}>
