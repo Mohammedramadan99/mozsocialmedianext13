@@ -45,9 +45,11 @@ function Navbar()
         {
             icon: <PostAddIcon />,
             title: 'profile',
+            // link: `/user/63c86567dee09f71a9a5fee0`
             link: `/user/${userAuth?._id}`
         }
     ])
+    console.log("navbar --> user", userAuth)
     const [startSearch, setStartSearch] = useState(false)
     const [activePage, setActivePage] = useState('Home')
     const [opened, setOpened] = useState(false)

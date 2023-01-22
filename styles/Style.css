@@ -1217,6 +1217,7 @@ header {
   height: 30px;
   padding: 0.625rem;
   border: 1px solid #ddd;
+  width: 100%;
 }
 .user__bottom__sidebar__introCard__content__form__btn {
   background-color: transparent;

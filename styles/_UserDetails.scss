@@ -191,7 +191,7 @@
                     @media (max-width: 468px) {
                         width: 70px;
                         font-size: 10px;
-                        padding: 5px 10px ;
+                        padding: 5px 10px;
                     }
                     &:hover{
                         background-color: $main_color;
@@ -299,6 +299,7 @@
                                 height: 30px;
                                 padding: rem(10);
                                 border: 1px solid #ddd;
+                                width: 100%;
                             }
                         }
                         
