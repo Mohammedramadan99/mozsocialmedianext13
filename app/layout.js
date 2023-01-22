@@ -1,6 +1,5 @@
 import Navbar from "../components/Layout/Navbar";
 import "../styles/Style.scss";
-
 import Providers from './providers'
 export default function RootLayout({ children }) {
   return (

@@ -1991,12 +1991,15 @@ body {
 }
 
 .mainAlert {
-  background-color: #e4861b;
+  background-color: rgba(228, 134, 27, 0.5);
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 1000;
   width: 100%;
+  color: #000 !important;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;

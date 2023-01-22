@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import Spinner from '../components/Spinner';
 import { useRouter } from 'next/navigation';
+import Alert from './Alert'
 
 export default function Page() {
   const dispatch = useDispatch()
@@ -45,6 +46,8 @@ export default function Page() {
           </div>
       )}
       <MainPage />
+      <Alert/>
+
     </motion.div>
   );
 }

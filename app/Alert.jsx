@@ -1,5 +1,5 @@
 
-import { ArrowRight } from "@mui/icons-material"
+// import { ArrowRight } from "@mui/icons-material"
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 
 function MainAlert() {
@@ -9,7 +9,7 @@ function MainAlert() {
         <WarningAmberIcon/>
         some actions will be <span> slow </span> because I use <span> the Shared Cluster </span> of mongodb (free)
       </div>
-      <div className='version' style={{ position: "fixed", bottom: "0", color: "#e4861b", fontWeight: "700", padding: "5px", fontSize: "15px", textAlign: "center", zIndex: "2000" }}>
+      {/* <div className='version' style={{ position: "fixed", bottom: "0", color: "#e4861b", fontWeight: "700", padding: "5px", fontSize: "15px", textAlign: "center", zIndex: "2000" }}>
       <div className="box">
           v 1.5
           <div className="info">
@@ -21,8 +21,7 @@ function MainAlert() {
             </ul>  
           </div>
         </div>
-      </div>
-
+      </div> */}
     </>
   )
 }

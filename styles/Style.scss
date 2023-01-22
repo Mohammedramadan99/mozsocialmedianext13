@@ -81,12 +81,14 @@ body {
 
 }
 .mainAlert{
-    background-color: $main_color;
+    background-color: rgba($main_color, .5);
     position: fixed;
     bottom: 0;
     left: 0;
     z-index: 1000;
     width: 100%;
+    color: #000 !important;
+    backdrop-filter: blur(5px);
     @include flex();
     span{
         display: inline-block;
