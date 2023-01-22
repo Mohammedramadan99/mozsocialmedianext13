@@ -366,19 +366,14 @@ header {
     display: none;
   }
   .mainPage .mainPage-container {
-    grid-template-columns: minmax(400px, 1fr);
+    grid-template-columns: minmax(200px, 1fr);
+    margin: 0;
   }
 }
 @media (width < 500px) {
   .mainPage {
     padding-left: 0;
     padding-right: 0;
-  }
-  .mainPage__left {
-    display: none;
-  }
-  .mainPage .mainPage-container {
-    width: 250px;
   }
 }
 .mainPage__left__sidebar {
@@ -567,6 +562,12 @@ header {
   display: flex;
   align-items: center;
 }
+@media (width < 500px) {
+  .user__bottom__postsGroup__posts__container__post__actions,
+.mainPage__middle__posts__container__post__actions {
+    flex-direction: column;
+  }
+}
 .user__bottom__postsGroup__posts__container__post__actions__item,
 .mainPage__middle__posts__container__post__actions__item {
   flex: 1;
@@ -580,6 +581,7 @@ header {
   align-items: center;
   gap: 0.625rem;
   flex-direction: row;
+  width: 100%;
 }
 .user__bottom__postsGroup__posts__container__post__actions__item.active, .user__bottom__postsGroup__posts__container__post__actions__item:hover,
 .mainPage__middle__posts__container__post__actions__item.active,
@@ -589,6 +591,7 @@ header {
 .user__bottom__postsGroup__posts__container__post__actions__item button,
 .mainPage__middle__posts__container__post__actions__item button {
   font-size: 10px;
+  width: 100%;
 }
 .user__bottom__postsGroup__posts__container__post__actions__item.active,
 .mainPage__middle__posts__container__post__actions__item.active {
@@ -623,6 +626,13 @@ header {
   display: flex;
   align-items: center;
   padding: 20px;
+}
+@media (width < 500px) {
+  .user__bottom__postsGroup__posts__container__commentsGroupe__writeComment .user__bottom__postsGroup__posts__container__commentsGroupe__writeComment__input,
+.mainPage__middle__posts__container__commentsGroupe__writeComment .user__bottom__postsGroup__posts__container__commentsGroupe__writeComment__input {
+    flex-direction: column;
+    row-gap: 10px;
+  }
 }
 .user__bottom__postsGroup__posts__container__commentsGroupe__writeComment__input,
 .mainPage__middle__posts__container__commentsGroupe__writeComment__input {
@@ -668,7 +678,7 @@ header {
 .user__bottom__postsGroup__posts__container__commentsGroupe__comments__comment__img,
 .mainPage__middle__posts__container__commentsGroupe__comments__comment__img {
   width: 70px;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 .user__bottom__postsGroup__posts__container__commentsGroupe__comments__comment__details,
 .mainPage__middle__posts__container__commentsGroupe__comments__comment__details {
@@ -712,6 +722,12 @@ header {
   font-weight: 600;
   font-size: 0.8125rem;
   padding-bottom: 0.625rem;
+}
+@media (width < 500px) {
+  .user__bottom__postsGroup__posts__container__commentsGroupe__comments__comment__details__top__name,
+.mainPage__middle__posts__container__commentsGroupe__comments__comment__details__top__name {
+    font-size: 0.5rem;
+  }
 }
 .user__bottom__postsGroup__posts__container__commentsGroupe__comments__comment__details__top__time,
 .mainPage__middle__posts__container__commentsGroupe__comments__comment__details__top__time {
@@ -944,6 +960,11 @@ header {
   padding: 0.3125rem 6.25rem;
   background-color: #fff;
 }
+@media (max-width: 468px) {
+  .user__top__info {
+    padding: 0.3125rem 4.375rem;
+  }
+}
 .user__top__info__personalImg {
   position: relative;
   flex: 3;
@@ -963,6 +984,14 @@ header {
 @media (max-width: 468px) {
   .user__top__info__personalImg {
     left: 0 !important;
+  }
+  .user__top__info__personalImg .user__top__info {
+    padding: 0.3125rem 4.375rem;
+  }
+  .user__top__info__personalImg .user__top__info__personalImg__container {
+    top: -145px;
+    width: 120px;
+    height: 120px;
   }
 }
 .user__top__info__personalImg.flex-start {
@@ -1073,6 +1102,13 @@ header {
   border: 2px solid #e4861b;
   transition: 0.3s ease;
   text-align: center;
+}
+@media (max-width: 468px) {
+  .user__top__info__following > div {
+    width: 70px;
+    font-size: 10px;
+    padding: 5px 10px;
+  }
 }
 .user__top__info__following > div:hover {
   background-color: #e4861b;
@@ -1940,6 +1976,11 @@ body {
   width: 100%;
   height: 500px;
 }
+@media (width < 500px) {
+  .img--parent {
+    height: 350px;
+  }
+}
 
 .mainAlert {
   background-color: #e4861b;
@@ -2070,6 +2111,12 @@ input {
   overflow: hidden;
   -o-object-fit: cover;
      object-fit: cover;
+}
+@media (width < 500px) {
+  .img__rounded {
+    width: 30px;
+    height: 30px;
+  }
 }
 .img__rounded img {
   width: 100%;

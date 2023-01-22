@@ -32,27 +32,30 @@ function Posts({ direction, user })
     }
     return (
         <div className={direction}>
+            <div className="mainPage__middle__top">
                 <WritePost dir={direction} userDetails={user} />
-            {direction === "mainPage__middle" ? (
-                    postLists?.map(p => (
-                        <motion.div variants={stagger} initial="initial" animate="animate" key = { p?._id } className={`${direction}__posts__container`} style={{ position: 'relative' }}>
-                            <Post  post = { p } direction = { direction } />
-                        </motion.div>
-                    )
+            </div>
+            <div className="mainPage__middle__bottom">
+                {direction === "mainPage__middle" ? (
+                        postLists?.map(p => (
+                            <motion.div variants={stagger} initial="initial" animate="animate" key = { p?._id } className={`${direction}__posts__container`} style={{ position: 'relative' }}>
+                                <Post  post = { p } direction = { direction } />
+                            </motion.div>
+                            )
                         )
+                ) : direction === "user__bottom__postsGroup" && (
+                    !user?.posts || user?.posts?.length === 0 ? (
+                        <p style={{ textAlign: "center", textTransform: "capitalize", marginTop: "40px" }}>there is not posts yet</p>
+                    ) : (
+                        user?.posts?.map(p => (
+                        <motion.div variants={stagger} initial="initial" animate="animate" key = { p?._id } className={`${direction}__posts__container`} style={{ position: 'relative' }}>
+                            <Post  direction = { direction } profile = { profile } post = { p } />
+                        </motion.div>
 
-            ) : direction === "user__bottom__postsGroup" && (
-                !user?.posts || user?.posts?.length === 0 ? (
-                    <p style={{ textAlign: "center", textTransform: "capitalize", marginTop: "40px" }}>there is not posts yet</p>
-                ) : (
-                    user?.posts?.map(p => (
-                    <motion.div variants={stagger} initial="initial" animate="animate" key = { p?._id } className={`${direction}__posts__container`} style={{ position: 'relative' }}>
-                        <Post  direction = { direction } profile = { profile } post = { p } />
-                    </motion.div>
-
-                    ))
-                )
-            )}
+                        ))
+                    )
+                )}
+            </div>
         </div>
     )
 }

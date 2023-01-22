@@ -68,6 +68,9 @@
             @include flex($justify: flex-start);
             padding: rem(5) rem(100);
             background-color: #fff;
+            @media (max-width: 468px) {
+            padding: rem(5) rem(70);
+            }
             &__personalImg {
                 position: relative;
                 flex: 3;
@@ -85,6 +88,14 @@
                 }
                 @media (max-width: 468px) {
                     left:0 !important;
+                    .user__top__info{
+                        padding: rem(5) rem(70);
+                    }
+                    .user__top__info__personalImg__container{
+                        top: -145px;
+                        width: 120px;
+                        height: 120px;
+                    }
                 }
                 &.flex-start {
                     @include flex($dir: column, $justify: space-around);
@@ -164,7 +175,6 @@
             &__following {
                 flex: 9;
                 @include flex($justify:flex-end);
-
                 &>div {
                     padding: 7px 20px;
                     width: 100px;
@@ -178,6 +188,11 @@
                     border: 2px solid $main_color;
                     transition: $reg_transition;
                     text-align: center;
+                    @media (max-width: 468px) {
+                        width: 70px;
+                        font-size: 10px;
+                        padding: 5px 10px ;
+                    }
                     &:hover{
                         background-color: $main_color;
                         color: #fff !important;
@@ -191,6 +206,7 @@
                 padding: 10px 0;
                 font-size: 20px;
                 color: $main_color;
+
                 @media (max-width: 768px) {
                     font-size: 20px;
                 }
@@ -432,7 +448,7 @@
                 text-align: center;
                 font-weight: 700;
                 padding-bottom: 20px;
-            }
+            } 
 
             &__editCover {
                 height: 300px;

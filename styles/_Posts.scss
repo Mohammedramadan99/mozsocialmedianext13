@@ -72,7 +72,9 @@
                 &__actions {
                     display: flex;
                     align-items: center;
-
+                    @media (width < 500px ) {
+                        flex-direction: column;
+                    }
                     &__item {
                         flex: 1;
                         padding: 10px 20px;
@@ -81,12 +83,14 @@
                         margin: 0 10px;
                         font-weight: 600;
                         @include flex($justify: space-between);
+                        width: 100%;
                         &.active,
                         &:hover {
                             background-color: #eee;
                         }
                         button{
                             font-size: clamp(5px,10px ,15px);
+                            width: 100%;
                         }
                         &.active {
                             color: $main_color;
@@ -121,7 +125,12 @@
                     display: flex;
                     align-items: center;
                     padding: 20px;
-
+                    @media (width < 500px ) {
+                        .user__bottom__postsGroup__posts__container__commentsGroupe__writeComment__input{
+                            flex-direction: column;
+                            row-gap: 10px;
+                        }
+                    }
                     &__userImg {}
 
                     &__input {
@@ -165,7 +174,8 @@
                         column-gap: rem(15);
                         &__img {
                             width: 70px;
-                            margin-left: 20px;
+                            margin-left: 10px;
+                           
                         }
                         
                         &__details {
@@ -200,6 +210,9 @@
                                     font-weight: 600;
                                     font-size: rem(13);
                                     padding-bottom: rem(10);
+                                    @media (width < 500px ) {
+                                        font-size: rem(8);
+                                    }
                                 }
                                 &__time{
                                     color: #999;

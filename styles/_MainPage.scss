@@ -19,22 +19,13 @@
         }
  
         .mainPage-container {
-            grid-template-columns: minmax(400px,1fr);
+            grid-template-columns: minmax(200px,1fr);
+            margin: 0;
         }
     }
     @media (width < 500px ) {
         padding-left: 0;
         padding-right: 0;
-        &__left {
-            // visibility: hidden;
-            display: none;
-            
-        }
- 
-        .mainPage-container {
-            // grid-template-columns: minmax(250px,1fr);
-            width: 250px;
-        }
     }
 
     &__left {

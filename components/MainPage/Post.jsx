@@ -103,7 +103,8 @@ function Post({ direction, post, profile })
     
     
     return (
-        <motion.div variants={fadeInUp}>
+        // <motion.div variants={fadeInUp}>
+        <>
             <div className={`${direction}__posts__container__post`}>
                 <Link href={post ? `/user/${post?.user?._id}` : profile && `/user/${profile._id}`} className={`${direction}__posts__container__post__userInfo`}>
                     <>
@@ -177,8 +178,9 @@ function Post({ direction, post, profile })
                     </div>
                 ) }
             </div>
-        </motion.div>
+        </>
     )
 }
+{/* </motion.div> */}
 
 export default Post
