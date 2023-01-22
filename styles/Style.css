@@ -1230,6 +1230,12 @@ header {
   align-items: center;
   gap: 0.625rem;
   flex-direction: row;
+  flex-wrap: wrap;
+}
+@media (width < 500px) {
+  .user__bottom__sidebar__friendsCard__friendsList {
+    justify-content: center;
+  }
 }
 .user__bottom__sidebar__friendsCard__friendsList__friend {
   display: flex;
@@ -1276,6 +1282,7 @@ header {
   transition: 0.3s ease;
   opacity: 0;
   visibility: hidden;
+  z-index: 3000;
 }
 .user__bottom__sidebar__followPersons.active {
   height: 100%;

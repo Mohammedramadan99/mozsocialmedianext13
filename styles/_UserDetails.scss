@@ -314,9 +314,11 @@
             &__friendsCard { 
                 &__friendsList {
                     margin-top: 20px;
-
-                    @include flex($justify: space-between);
-
+                    @include flex($justify:space-between);
+                    flex-wrap: wrap;
+                    @media (width < 500px) {
+                        justify-content: center;
+                    }
                     &__friend {
                         @include flex($dir: column);
                         transition: $reg_transition;
@@ -365,6 +367,8 @@
                 transition: $reg_transition;
                 opacity: 0;
                 visibility: hidden;
+                z-index: 3000;
+
                 &.active{
                     height: 100%;
                     visibility: visible;
