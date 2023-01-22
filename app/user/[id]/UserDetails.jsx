@@ -167,7 +167,7 @@ function UserDetails({id})
                                 <div className="user__editPhoto__box__title">
                                     edit your cover
                                 </div>
-                                <div className="user__editPhoto__box__note" style={{fontWeight:"600",textAlign:"center",margin:"10px",textTransform:"capitalize",color:"#f00"}}> file size must be less than 4MB </div>
+                                <div className="user__editPhoto__box__note" style={{fontWeight:"600",textAlign:"center",margin:"10px",textTransform:"capitalize",color:"#f00"}}> image size must be less than 1MB </div>
                                     <div className="user__editPhoto__box__editCover">
                                         {imagePreview ? (
                                             <div className="user__editPhoto__box__editCover__img">
@@ -188,7 +188,7 @@ function UserDetails({id})
                                             <Spinner/>
                                             ) : (
                                                 <>update photos</>
-                                                )}
+                                            )}
                                     </button>
                             </div>
                         </div>
