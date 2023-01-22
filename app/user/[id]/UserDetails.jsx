@@ -167,7 +167,7 @@ function UserDetails({id})
                                 <div className="user__editPhoto__box__title">
                                     edit your cover
                                 </div>
-                                
+                                <div className="user__editPhoto__box__note" style={{fontWeight:"600",textAlign:"center",margin:"10px",textTransform:"capitalize",color:"#f00"}}> file size must be less than 4MB </div>
                                     <div className="user__editPhoto__box__editCover">
                                         {imagePreview ? (
                                             <div className="user__editPhoto__box__editCover__img">
@@ -177,18 +177,18 @@ function UserDetails({id})
                                             <input type="file" accept="image/*" onChange={createPostImagesChange} />
                                         )}
                                     </div>
+                                        
                                     <div className="user__editPhoto__box__editProfilePhoto">
                                         <div className="user__editPhoto__box__editProfilePhoto__img">
                                             <img src={profile?.image} alt="profile" />
                                         </div>
                                     </div>
-
                                     <button className="user__editPhoto__box__btn common_btn" onClick={(e) => uploladcoverPhoto(e)} disabled={imagePreview ? false : true}>
                                         {uploadPhoto ? (
                                             <Spinner/>
-                                        ) : (
-                                            <>update photos</>
-                                        )}
+                                            ) : (
+                                                <>update photos</>
+                                                )}
                                     </button>
                             </div>
                         </div>

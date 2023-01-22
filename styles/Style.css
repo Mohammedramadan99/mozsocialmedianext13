@@ -352,6 +352,7 @@ header {
   padding: 0 20px;
   min-height: calc(100vh - 60px);
   padding-top: 20px;
+  margin-bottom: 20px;
 }
 .mainPage .mainPage-container {
   display: grid;
@@ -1334,7 +1335,7 @@ header {
   gap: 1.25rem;
 }
 .user__editPhoto {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 5000;
