@@ -55,6 +55,11 @@
                 &__content {
                     padding: 15px;
                     padding-top: 0;
+                    line-height: 1.7;
+                    font-size: 15px;
+                    color: #333;
+                    word-spacing: 2px;
+
                 }
 
                 &__numbers {
@@ -222,9 +227,13 @@
                             }
 
                             &__commentContent {
+                                // font-size: clamp(.5rem,1vw + .1rem, 1rem);
                                 font-size: 13px;
                                 text-transform: lowercase;
-                                color: #999;
+                                color: #777;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                word-spacing: 2px;
                             }
                         }
                     }

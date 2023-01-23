@@ -29,7 +29,7 @@ function Navbar()
     let dropdownref = useRef()
     const store = useSelector(state => state?.users)
     const { userAuth,loggedOut, usersList } = store
-    const currUser = session?.user
+    const currentUser = usersList !== {} && usersList && usersList?.find(user => user?._id === userAuth?._id)
     
     const [icons, setIcons] = useState([
         {
@@ -108,9 +108,9 @@ function Navbar()
                 </div>
                 <div className=" mainNav__right" ref={dropdownref}>
                     <Link href={`/user/${userAuth?._id}`} className="mainNav__right__item nav-icon" legacyBehavior >
-                        {currUser?.image ? (
+                        {currentUser?.image ? (
                                 <div className="mainNav__right__item img__rounded">
-                                <Image src={currUser?.image} width={100} height={100} alt="personal img" />
+                                <Image src={currentUser?.image} width={100} height={100} alt="personal img" />
                                 </div>
                         ) : (
                                 <div className="mainNav__right__item__logoLitter">

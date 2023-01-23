@@ -11,6 +11,7 @@ import Image from 'next/image'
 import Edit from '@mui/icons-material/Edit'
 
 import Spinner from '../../../components/Spinner'
+import { useSession } from 'next-auth/react'
 
 function UserDetails({id})
 {
@@ -30,6 +31,8 @@ function UserDetails({id})
         loading,
         uploadPhoto,
     } = useSelector(state => state.users);
+    const {data:session} = useSession()
+
     const [editPhoto, setEditPhoto] = useState(false)
     const [editCover, setEditCover] = useState(false)
     // console.log(userAuth)
@@ -81,6 +84,7 @@ function UserDetails({id})
     }, [id, followed, unFollowed, profile?.followers?.length])
     if (profileImgUpdated)
     {
+        dispatch(LoggedInUserAction(session?.user?.email))
         dispatch(reset())
         router.push("/")
     }
@@ -88,7 +92,7 @@ function UserDetails({id})
     useEffect(() => {
         dispatch(userProfileAction(id))
       }, [id])
-    // console.log({session})
+    console.log("profileInfo",profile)
     return loadingProfile ? (
         <div className='profile'>
             <Spinner />
@@ -120,16 +124,15 @@ function UserDetails({id})
                         </div>
                         <div className="user__top__info">
                             <div className={profile?._id !== userAuth?._id ? "user__top__info__personalImg center" : "user__top__info__personalImg flex-start"}>
-                                {
-                                profile?._id === userAuth?._id && profile?.accountType !== "google" &&
+                            {profile?.image ? (
+                                <div className='user__top__info__personalImg__container'>
+                                    { profile?._id === userAuth?._id && profile.accountType === 'normal' &&
                                     <div className="overlay" onClick={() => setEditPhoto(true)}>
                                         <div className="overlay__edit">
                                             <Edit />
                                         </div>
                                     </div>
-                                }
-                            {profile?.image ? (
-                                <div className='user__top__info__personalImg__container'>
+                                    }
                                     <Image src={profile?.image} alt="img" width={250} height={250} style={{ objectFit:"cover" }} />
                                 </div>
                             ) : (
@@ -215,9 +218,13 @@ function UserDetails({id})
                                         <input type="file" accept="image/*" onChange={createPostImagesChange} />
                                     )}
                                 </div>
-
+                                
                                 <div className="user__editPhoto__box__btn common_btn" onClick={(e) => uploadProfilePhoto(e)}>
-                                    update photos
+                                {uploadPhoto ? (
+                                            <Spinner/>
+                                            ) : (
+                                                <>update</>
+                                            )}
                                 </div>
                             </div>
                         </div>

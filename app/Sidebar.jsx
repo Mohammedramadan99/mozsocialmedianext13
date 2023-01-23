@@ -10,6 +10,7 @@ const Person = dynamic(() => import('../components/MainPage/Person'), { ssr: fal
 
 import {motion} from 'framer-motion'
 import {stagger } from '../utils/animations'
+import { useEffect } from 'react';
 
 
 function Sidebar()
@@ -19,19 +20,21 @@ function Sidebar()
         usersCount,} = users
         console.log("usersList #11",usersList)
     const usersFiltered = usersList !== {} && usersList && usersList?.filter(user => user?._id !== userAuth?._id)
-    console.log("coverUser",userAuth)
+    const currentUser = usersList !== {} && usersList && usersList?.find(user => user?._id === userAuth?._id)
+    
+    
     return (
         <div className='mainPage__left__sidebar'>
             <div className="mainPage__left__sidebar__G1">
                 <Link  href={`/user/${userAuth?._id}`} className="mainPage__left__sidebar__G1__Imgs">
                     <div className="mainPage__left__sidebar__G1__Imgs__coverImg">
                         <div style={{ height: "200px" }}>
-                            {userAuth && <Image src={userAuth?.coverPhoto} alt="photo" fill={true} style={{objectFit:'cover'}} />}
+                            {userAuth && <Image src={currentUser?.coverPhoto} alt="photo" fill={true} style={{objectFit:'cover'}} />}
                         </div>
                     </div>
                     <div className="mainPage__left__sidebar__G1__Imgs__profileImg img__rounded">
                         <div className="img--container">
-                            {userAuth?.image && <Image src={userAuth?.image} alt="photo" width={100} height={100} />}
+                            {currentUser?.image && <Image src={currentUser?.image} alt="photo" width={100} height={100} />}
                         </div>
                     </div>
                 </Link>

@@ -14,7 +14,7 @@ import Alert from './Alert'
 export default function Page() {
   const dispatch = useDispatch()
   const {loading:postloading } = useSelector(state => state.posts)
-  const { userAuth } = useSelector(state => state.users)
+  const { userAuth,profileImgUpdated } = useSelector(state => state.users)
   const {data:session} = useSession()
   const router = useRouter()
   
@@ -23,8 +23,8 @@ export default function Page() {
     dispatch(fetchUsersAction(4))
   }, [dispatch])
   useEffect(() => {
-    session && !userAuth && dispatch(LoggedInUserAction({email:session?.user?.email}))
-  }, [dispatch,session])
+    session && !userAuth || profileImgUpdated && dispatch(LoggedInUserAction({email:session?.user?.email}))
+  }, [dispatch,session,profileImgUpdated])
   useEffect(() => {
     if (userAuth === null || !userAuth || userAuth === {})
     {

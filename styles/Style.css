@@ -545,6 +545,10 @@ header {
 .mainPage__middle__posts__container__post__content {
   padding: 15px;
   padding-top: 0;
+  line-height: 1.7;
+  font-size: 15px;
+  color: #333;
+  word-spacing: 2px;
 }
 .user__bottom__postsGroup__posts__container__post__numbers,
 .mainPage__middle__posts__container__post__numbers {
@@ -741,7 +745,10 @@ header {
 .mainPage__middle__posts__container__commentsGroupe__comments__comment__details__commentContent {
   font-size: 13px;
   text-transform: lowercase;
-  color: #999;
+  color: #777;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-spacing: 2px;
 }
 
 @-webkit-keyframes reactions {
@@ -1039,6 +1046,9 @@ header {
 }
 .user__top__info__personalImg .overlay {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 30%;
   height: 30%;
   font-weight: 700;
@@ -1053,7 +1063,7 @@ header {
   overflow: hidden;
   transition: 0.3s ease;
   opacity: 1;
-  z-index: 2000;
+  z-index: 10000;
 }
 .user__top__info__personalImg .overlay__edit {
   background-color: rgba(26, 80, 228, 0.3);
@@ -1354,7 +1364,7 @@ header {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 2000;
+  z-index: 3000;
   display: flex;
   justify-content: center;
   align-items: center;

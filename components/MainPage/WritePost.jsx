@@ -14,9 +14,7 @@ function WritePost({ dir })
 {
     const dispatch = useDispatch()
     const { data: session } = useSession()
-    const { userAuth } = useSelector(state => state.users)
-    
-    const currUser = !userAuth ? session?.user : userAuth
+    const { userAuth,usersList } = useSelector(state => state.users)
 
     const { isCreated, createPostLoading, appErr } = useSelector(state => state.posts)
     const [message, setMessage] = useState('')
@@ -27,6 +25,8 @@ function WritePost({ dir })
         description: "",
         category: "",
     })
+    const currentUser = usersList !== {} && usersList && usersList?.find(user => user?._id === userAuth?._id)
+
     // for checking 
     const [addImg, setAddImg] = useState(false)
 
@@ -95,10 +95,10 @@ function WritePost({ dir })
             <>
                 <div className={`${dir}__writePost__user`}>
                     <div className={`${dir}__writePost__user__img img__rounded`}>
-                        {currUser?.image && <Image width={100} height={100} src={currUser?.image} alt="you" />}
+                        {currentUser?.image && <Image width={100} height={100} src={currentUser?.image} alt="you" />}
                     </div>
                     <div className={`${dir}__writePost__user__name`}>
-                        {dir === "userDetails" ? `${currUser?.name}` : `${currUser?.name}`}
+                        {dir === "userDetails" ? `${currentUser?.name}` : `${currentUser?.name}`}
                     </div>
                 </div>
                 <div className={`${dir}__writePost__top`}>
