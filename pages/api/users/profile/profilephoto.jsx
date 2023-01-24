@@ -29,7 +29,7 @@ handler.use(isAuth).put(async (req, res) =>
     console.log("profileIMMG",req.body)
     try
     {
-        const result = await cloudinary.v2.uploader.upload(req.body.uploadImage, {
+        const result = await cloudinary.v2.uploader.upload(req?.body?.uploadImage, {
             folder: "blog",
         });
         const url = result.secure_url 
@@ -49,7 +49,10 @@ handler.use(isAuth).put(async (req, res) =>
         });
     } catch (error)
     {
-        res.status(500).json({message:error.message});
+        res.status(500).json({
+            success:false,
+            message:error.message
+        });
     }
     await db.disconnect();
 })
