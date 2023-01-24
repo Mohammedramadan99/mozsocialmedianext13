@@ -109,7 +109,7 @@ function Post({ direction, post, profile })
                 <Link href={post ? `/user/${post?.user?._id}` : profile && `/user/${profile._id}`} className={`${direction}__posts__container__post__userInfo`}>
                     <>
                         <div className={`${direction}__posts__container__post__userInfo__img img__rounded`}>
-                            {post?.user && post?.user?.image ? <Image src={post?.user?.image} fill={true} alt="you" /> : profile && profile?.image  && <Image src={post?.user?.image} alt="you" fill={true} style={{objectFit:'cover'}} />}
+                            {post?.user && post?.user?.image ? <Image src={post?.user?.image} fill={true} alt="you" /> : profile && profile?.image  && <Image src={profile?.image} alt="you" fill={true} style={{objectFit:'cover'}} />}
                         </div>
                         <div className={`${direction}__posts__container__post__userInfo__left`}>
                             <div className={`${direction}__posts__container__post__userInfo__left__name`}>
