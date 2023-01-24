@@ -84,7 +84,7 @@ function UserDetails({id})
     }, [id, followed, unFollowed, profile?.followers?.length])
     if (profileImgUpdated)
     {
-        dispatch(LoggedInUserAction(session?.user?.email))
+        // dispatch(LoggedInUserAction(session?.user?.email))
         dispatch(reset())
         router.push("/")
     }
