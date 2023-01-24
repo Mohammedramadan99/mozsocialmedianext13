@@ -33,7 +33,8 @@ function Posts({ direction, user })
     return (
         <div className={direction}>
             <div className="mainPage__middle__top">
-                <WritePost dir={direction} userDetails={user} />
+            {direction !== "user__bottom__postsGroup" && <WritePost dir={direction} userDetails={user} />}
+                
             </div>
             <div className="mainPage__middle__bottom">
                 {direction === "mainPage__middle" ? (
