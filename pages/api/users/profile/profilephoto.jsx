@@ -49,9 +49,10 @@ handler.use(isAuth).put(async (req, res) =>
         });
     } catch (error)
     {
-        res.status(500).json({
+        res.status(403).json({
             success:false,
-            message:error.message
+            message:error.message,
+            error
         });
     }
     await db.disconnect();
