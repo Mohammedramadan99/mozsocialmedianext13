@@ -23,7 +23,7 @@ export default function Page() {
     dispatch(fetchUsersAction(4))
   }, [dispatch])
   useEffect(() => {
-    session && !userAuth || profileImgUpdated && dispatch(LoggedInUserAction({email:session?.user?.email}))
+    session && !userAuth && dispatch(LoggedInUserAction({email:session?.user?.email}))
   }, [dispatch,session,profileImgUpdated])
   useEffect(() => {
     if (userAuth === null || !userAuth || userAuth === {})

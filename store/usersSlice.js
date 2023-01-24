@@ -579,7 +579,7 @@ const usersSlices = createSlice({
       state.serverErr = null;
     });
     builder.addCase(uploadCoverPhototAction.fulfilled, (state, action) => {
-      state.profile = action?.payload;
+      // state.userAuth = action?.payload;
       state.profileImgUpdated = true;
       state.uploadPhoto = false;
       state.appErr = null;
@@ -597,7 +597,7 @@ const usersSlices = createSlice({
       state.serverErr = null;
     });
     builder.addCase(uploadProfilePhototAction.fulfilled, (state, action) => {
-      state.profilePhoto = action?.payload;
+      // state.userAuth = action?.payload;
       state.profileImgUpdated = true;
       state.uploadPhoto = false;
       state.appErr = null;

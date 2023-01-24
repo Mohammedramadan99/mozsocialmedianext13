@@ -41,9 +41,12 @@ handler.use(isAuth).put(async (req, res) =>
             },
             { new: true }
         );
-    console.log("foundUser",foundUser)
+        console.log("foundUser",foundUser)
 
-        res.status(200).json(foundUser);
+        res.status(200).json({
+            success: true,
+            message:"updated"
+        });
     } catch (error)
     {
         res.status(500).json({message:error.message});

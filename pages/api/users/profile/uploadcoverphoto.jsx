@@ -24,7 +24,7 @@ handler.use(isAuth).put(async (req, res) =>
 {
     await db.connect();
     const { _id } = req.user;
-    console.log("coverHere", req.body)
+    console.log("coverHere", req.body) 
     try
     {
         const result = await cloudinary.v2.uploader.upload(req?.body?.uploadImage, {
@@ -39,7 +39,10 @@ handler.use(isAuth).put(async (req, res) =>
             },
             { new: true }
         );
-        res.status(200).json(foundUser);
+        res.status(200).json({
+            success: true,
+            message:"updated"
+        });
     } catch (error)
     {
         res.status(500).json({message:error.message});
