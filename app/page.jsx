@@ -1,5 +1,4 @@
 'use client';
-import MainPage from './MainPage';
 import { motion } from "framer-motion";
 import { routerAnimation } from "../utils/animations";
 import { fetchUsersAction, LoggedInUserAction } from '../store/usersSlice';
@@ -7,10 +6,19 @@ import { fetchPostsAction } from '../store/postsSlice';
 import { useSession } from 'next-auth/react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
-import Spinner from '../components/Spinner';
+// import Spinner from '../components/Spinner';
+import dynamic from 'next/dynamic';
+
 import { useRouter } from 'next/navigation';
 import Alert from './Alert'
+// import MainPage from './MainPage';
 
+const Spinner = dynamic(() => import('../components/Spinner'), {
+  ssr: false,
+})
+const MainPage = dynamic(() => import('./MainPage'), {
+  ssr: false,
+})
 export default function Page() {
   const dispatch = useDispatch()
   const {loading:postloading } = useSelector(state => state.posts)
