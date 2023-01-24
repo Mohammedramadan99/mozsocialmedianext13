@@ -18,9 +18,9 @@ const handler = nc();
 // GET user details
 //----------------------------------------------------------------
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_SECRET_KEY,
+    cloud_name: 'dtmjc8y9z',
+    api_key: '379966828288349',
+    api_secret: 'a41LSvU3XXAJuQOLxorhOVFPauw',
 });
 handler.use(isAuth).put(async (req, res) =>
 {
