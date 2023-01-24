@@ -32,7 +32,7 @@ handler.use(isAuth).put(async (req, res) =>
         const result = await cloudinary.v2.uploader.upload(req.body.uploadImage, {
             folder: "blog",
         });
-        const url = result.secure_url
+        const url = result.secure_url 
 
         const foundUser = await User.findByIdAndUpdate(
             _id,
@@ -41,10 +41,12 @@ handler.use(isAuth).put(async (req, res) =>
             },
             { new: true }
         );
-        res.json(foundUser);
+    console.log("foundUser",foundUser)
+
+        res.status(200).json(foundUser);
     } catch (error)
     {
-        res.json(error.message);
+        res.status(500).json({message:error.message});
     }
     await db.disconnect();
 })
